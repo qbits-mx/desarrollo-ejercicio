@@ -9,7 +9,7 @@ public class Persona {
     private boolean genero;
     
     /*
-    si una clase NO tiene NINGUN  ????  constructor, java le asigna 
+    si una clase NO tiene josue constructor, java le asigna 
     de manera automática un constructor que no recibe parámetros 
     y que además NO efectúa ninguna operación especial. O sea,
     lo equivalente (en esta clase, a lo siguiente:)
