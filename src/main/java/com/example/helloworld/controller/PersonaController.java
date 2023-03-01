@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping(value="/gus/tavo/arellano")
 public class PersonaController {
-    private PersonaService ps = new PersonaService();
+    private PersonaService ps = new PersonaServiceImpl();
     /*
     aqui usaremos por CONVENCION:
         GetMapping    // se usa para recuperar información del server
