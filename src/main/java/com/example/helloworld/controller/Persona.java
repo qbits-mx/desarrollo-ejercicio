@@ -1,5 +1,12 @@
 package com.example.helloworld.controller;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
+@AllArgsConstructor
 public class Persona {
     private int id;
     private String nombre;
@@ -29,54 +36,8 @@ public class Persona {
     public Persona(int numero) {
         System.out.println(numero);
     }
-    public Persona(int id, String nombre, String apPat, String apMaterno, float sueldo, boolean genero) {
-        this.id = id;
-        this.nombre = nombre;
-        this.apPat = apPat;
-        this.apMaterno = apMaterno;
-        this.sueldo = sueldo;
-        this.genero = genero;
-    }
     public String toString() {
         return "adios";
     }
-    
-    public int getId() {
-        return id;
-    }
-    public void setId(int id) {
-        this.id = id;
-    }
-    public String getNombre() {
-        return nombre;
-    }
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-    public String getApPat() {
-        return apPat;
-    }
-    public void setApPat(String apPat) {
-        this.apPat = apPat;
-    }
-    public String getApMaterno() {
-        return apMaterno;
-    }
-    public void setApMaterno(String apMaterno) {
-        this.apMaterno = apMaterno;
-    }
-    public float getSueldo() {
-        return sueldo;
-    }
-    public void setSueldo(float sueldo) {
-        this.sueldo = sueldo;
-    }
-    public boolean isGenero() {
-        return genero;
-    }
-    public void setGenero(boolean genero) {
-        this.genero = genero;
-    }
-    
     
 }

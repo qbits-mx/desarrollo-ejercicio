@@ -1,5 +1,7 @@
 package com.example.helloworld.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -14,7 +16,11 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping(value="/gus/tavo/arellano")
 public class PersonaController {
-    private PersonaService ps = new PersonaServiceImpl();
+    private PersonaService primeraImplementacion;
+    
+    public PersonaController(@Qualifier("primeraImplementacionYYY") PersonaService primeraImplementacion) {
+        this.primeraImplementacion = primeraImplementacion;
+    }
     /*
     aqui usaremos por CONVENCION:
         GetMapping    // se usa para recuperar información del server
@@ -28,7 +34,9 @@ public class PersonaController {
             Los códigos 4xx son asociados a acciones de tipo "me mandaste algo mal"
             Los códigos 5xx son asociados a acciones de tipo "error del server, no tuyo"
     */
-    @GetMapping(value= "/pregunta", produces = "application/json; charset=utf-8")
+    @GetMapping(
+            value= "/pregunta", 
+            produces = "application/json; charset=utf-8")
     public Persona sendGreetingsGET() {
         //Persona p = new Persona(1, "gus1GET", "arellano", "sandoval", 123.32F, true);
 //        Persona q = tavito();
@@ -42,12 +50,12 @@ public class PersonaController {
 //    }    
     @PostMapping(value= "/pregunta", produces = "application/json; charset=utf-8")
     public Persona tavito() {
-        return ps.calcula("algo", "pedregal", "gus1DELETE", "arellanbo", "sandoval");
+        return primeraImplementacion.calcula("algo", "pedregal", "gus1DELETE", "arellanbo", "sandoval");
     }
     
     @DeleteMapping(value= "/pregunta", produces = "application/json; charset=utf-8")
     public Persona sendGreetingDelete() {
-        return ps.calcula("algo", "pedregal", "gus1DELETE", "arellanbo", "sandoval");
+        return primeraImplementacion.calcula("algo", "pedregal", "gus1DELETE", "arellanbo", "sandoval");
     } 
     /*
     
@@ -91,7 +99,7 @@ public class PersonaController {
             @PathVariable String variable1, 
             @PathVariable String variable2, 
             @PathVariable String variable3) {
-        return ps.calcula(ua, colonia, variable1, variable2, variable3);
+        return primeraImplementacion.calcula(ua, colonia, variable1, variable2, variable3);
     }
     
     @GetMapping(
@@ -102,7 +110,7 @@ public class PersonaController {
             @RequestHeader String colonia,
             @PathVariable String variable1, 
             @PathVariable String variable2) {
-        return ps.calcula(ua, colonia, variable1, variable2, "variable3");
+        return primeraImplementacion.calcula(ua, colonia, variable1, variable2, "variable3");
     }
     
     @GetMapping(
@@ -114,7 +122,7 @@ public class PersonaController {
             @RequestParam String variable1, 
             @RequestParam String variable2, 
             @RequestParam String variable3) {
-        return ps.calcula(ua, colonia, variable1, variable2, variable3);
+        return primeraImplementacion.calcula(ua, colonia, variable1, variable2, variable3);
     }
 
 }
