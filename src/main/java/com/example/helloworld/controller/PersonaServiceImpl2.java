@@ -1,5 +1,7 @@
 package com.example.helloworld.controller;
 
+import java.util.List;
+
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
 
@@ -23,5 +25,9 @@ public class PersonaServiceImpl2 implements PersonaService {
         p.setSueldo(nuevo);
         personaMapper.insert(p);
         return p;
+    }
+    @Override
+    public List<Persona> getAll() {
+        return personaMapper.getAll();
     }
 }

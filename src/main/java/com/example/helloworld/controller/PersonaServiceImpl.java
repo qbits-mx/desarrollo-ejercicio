@@ -1,5 +1,7 @@
 package com.example.helloworld.controller;
 
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 
 @Service(value = "primeraImplementacionXXX")
@@ -11,5 +13,9 @@ public class PersonaServiceImpl implements PersonaService {
     }
     public Persona calcula(String ua, String col, String v1, String v2, String v3) {
         return personaMapper.getById(7534);
+    }
+    @Override
+    public List<Persona> getAll() {
+        return personaMapper.getAll();
     }
 }
