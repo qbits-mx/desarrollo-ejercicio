@@ -2,23 +2,26 @@ package com.example.helloworld.controller;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Delete;
+import org.apache.ibatis.annotations.Insert;
+import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class PersonaMapper {
-    public List<Persona> getAll() {
-        return null;
-    }
-    public void insert(Persona p) {
-        // ir a la base e insertar
-    }
-    public void update(Persona p) {
-        // ir a la base y actualizar
-    }
-    public void delete(int idPersona) {
-        // ir a la base y borrar a la persona que tenga el id dado
-    }
-    public Persona getById(int id) {
-        return new Persona(id, "gus", "tavo","hola", 111.11f, true);
-    }
+public interface PersonaMapper {
+    @Select("SELECT * FROM Persona")
+    public List<Persona> getAll();
+    
+    @Select("SELECT * FROM Persona WHERE id = #{id} ")
+    public Persona getById(int id);
+
+    @Insert("INSERT INTO Persona VALUES(#{id},#{nombre},#{apPat},#{apMaterno},#{sueldo},#{genero})")
+    public void insert(Persona p);
+    
+    @Update("UPDATE Persona SET id=#{id}, nombre=#{nombre}, apPat=#{apPat}, apMaterno=#{apMaterno}, sueldo=#{sueldo}, genero=#{genero} ")
+    public void update(Persona p);
+    
+    @Delete("DELETE FROM Persona WHER id=#{idPersona}")
+    public void delete(int idPersona);
 }
