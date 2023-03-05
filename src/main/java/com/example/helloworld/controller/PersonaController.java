@@ -1,5 +1,7 @@
 package com.example.helloworld.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -13,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+@SuppressWarnings("unused")
 @RestController
 @RequestMapping(value="/gus/tavo/arellano")
 public class PersonaController {
@@ -124,5 +127,11 @@ public class PersonaController {
             @RequestParam String variable3) {
         return primeraImplementacion.calcula(ua, colonia, variable1, variable2, variable3);
     }
+    @GetMapping(
+            value= "/personas", 
+            produces = "application/json; charset=utf-8")
+    public List<Persona> personas() {
+        return primeraImplementacion.getAll();
+    } 
 
 }
