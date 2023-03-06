@@ -16,15 +16,3 @@ public class Mueble {
     private float precio;
     private boolean agotado;
 }
-/*
-
-CREATE TABLE Mueble (
-    id INT,
-    nombre VARCHAR(64),
-    color VARCHAR(64),
-    precio decimal,
-    agotado boolean,
-    PRIMARY KEY(id)
-);
-
-*/
