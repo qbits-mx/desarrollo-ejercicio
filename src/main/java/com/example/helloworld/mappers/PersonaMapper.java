@@ -1,9 +1,11 @@
-package com.example.helloworld.personas;
+package com.example.helloworld.mappers;
 
 import java.util.List;
 
 import org.apache.ibatis.annotations.*;
 import org.springframework.stereotype.Repository;
+
+import com.example.helloworld.personas.Persona;
 
 @Repository
 public interface PersonaMapper {
