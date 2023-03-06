@@ -1,4 +1,4 @@
-package com.example.helloworld;
+package com.example.helloworld.muebles;
 
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;

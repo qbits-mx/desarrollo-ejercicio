@@ -5,9 +5,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Getter
-@Setter
-@AllArgsConstructor
+@Getter     //mandamos a llamar todos los Getters 
+@Setter     //mandamos a llamar todos los Setter
+@AllArgsConstructor    //
 @NoArgsConstructor
 public class Mueble {
     private int id;
