@@ -1,10 +1,9 @@
 package com.example.helloworld.personas;
 
 import java.util.List;
-
 import org.springframework.stereotype.Service;
 
-@Service(value = "primeraImplementacionXXX")
+@Service(value = "primeraImplementacion")
 public class PersonaServiceImpl implements PersonaService {
     private PersonaMapper personaMapper;
     
