@@ -4,7 +4,6 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
 @Getter
 @Setter
 @AllArgsConstructor
@@ -15,16 +14,17 @@ public class Mueble {
     private String color;
     private float precio;
     private boolean agotado;
+    
+    /*
+    CREATE TABLE Mueble (
+      id INT,
+      nombre VARCHAR(64),
+      color VARCHAR(64),
+      precio DECIMAL,
+      agotado BOOLEAN,
+      PRIMARY KEY(id)
+    );
+    INSERT INTO Mueble Values(117, 'silla', 'roja',124.50, false);
+    INSERT INTO Mueble Values(118, 'sofa', 'chocolate', 222.12, false);
+    */
 }
-/*
-
-CREATE TABLE Mueble (
-    id INT,
-    nombre VARCHAR(64),
-    color VARCHAR(64),
-    precio decimal,
-    agotado boolean,
-    PRIMARY KEY(id)
-);
-
-*/
