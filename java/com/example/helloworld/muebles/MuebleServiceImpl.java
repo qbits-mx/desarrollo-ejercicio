@@ -4,6 +4,8 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import com.example.helloworld.mappers.MuebleMapper;
+
 @Service
 public class MuebleServiceImpl implements MueblesService {
 	    private MuebleMapper muebleMapper;
