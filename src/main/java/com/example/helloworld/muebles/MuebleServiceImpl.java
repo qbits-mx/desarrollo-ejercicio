@@ -2,8 +2,10 @@ package com.example.helloworld.muebles;
 
 import java.util.List;
 
+import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
 
+@Primary
 @Service
 public class MuebleServiceImpl implements MueblesService {
 	    private MuebleMapper muebleMapper;
