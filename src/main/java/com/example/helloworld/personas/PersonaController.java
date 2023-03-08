@@ -1,21 +1,18 @@
-package com.example.helloworld.controller;
+package com.example.helloworld.personas;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-//import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-@SuppressWarnings("unused")
 @RestController
 @RequestMapping(value="/gus/tavo/arellano")
 public class PersonaController {
@@ -24,6 +21,7 @@ public class PersonaController {
     public PersonaController(@Qualifier("primeraImplementacionYYY") PersonaService primeraImplementacion) {
         this.primeraImplementacion = primeraImplementacion;
     }
+    
     /*
     aqui usaremos por CONVENCION:
         GetMapping    // se usa para recuperar información del server
@@ -132,6 +130,5 @@ public class PersonaController {
             produces = "application/json; charset=utf-8")
     public List<Persona> personas() {
         return primeraImplementacion.getAll();
-    } 
-
+    }
 }

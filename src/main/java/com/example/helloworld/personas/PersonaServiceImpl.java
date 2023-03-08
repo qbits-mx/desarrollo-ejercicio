@@ -1,4 +1,4 @@
-package com.example.helloworld.controller;
+package com.example.helloworld.personas;
 
 import java.util.List;
 
@@ -14,9 +14,8 @@ public class PersonaServiceImpl implements PersonaService {
     public Persona calcula(String ua, String col, String v1, String v2, String v3) {
         return personaMapper.getById(7534);
     }
-	@Override
-	public List<Persona> getAll() {
-		
-		return personaMapper.getAll();
-	}
+    @Override
+    public List<Persona> getAll() {
+        return personaMapper.getAll();
+    }
 }
