@@ -6,6 +6,7 @@ mysql -uroot -pgarellano
 
 drop database publisher;
 create database publisher;
+use publisher;
 
 CREATE TABLE Persona(
     id INT,
