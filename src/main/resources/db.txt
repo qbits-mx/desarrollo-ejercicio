@@ -2,8 +2,6 @@ docker run -p 3307:3306 -d --name data -e MYSQL_ROOT_PASSWORD=garellano mariadb/
 docker exec -it data bash
 mysql -uroot -pgarellano
 
-
-
 drop database publisher;
 create database publisher;
 use publisher;

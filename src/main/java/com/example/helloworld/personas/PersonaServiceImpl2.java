@@ -5,8 +5,6 @@ import java.util.List;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
 
-import com.example.helloworld.muebles.Mueble;
-
 @Primary
 @Service(value = "primeraImplementacionYYY")
 public class PersonaServiceImpl2 implements PersonaService {
