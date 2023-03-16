@@ -5,6 +5,9 @@ import java.util.List;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
 
+import com.example.helloworld.productos.modelo.Producto;
+import com.example.helloworld.productos.modelo.ResultadoConsulta;
+
 @Primary
 @Service
 
@@ -30,5 +33,13 @@ public class ProductoServiceImpl implements ProductoService {
     }
     public void elimina(int id) {
         productoMapper.delete(id);
+    }
+    @Override
+    public ResultadoConsulta getResultadoConsulta(int idProducto) {
+        List<String> caracteristicas = productoMapper.getAllCaractForProducto(idProducto);
+        List<String> imagenes = productoMapper.getAllImagesForProducto(idProducto);
+        Producto producto = productoMapper.selectById(idProducto);
+        ResultadoConsulta rc = new ResultadoConsulta(producto, imagenes, caracteristicas);
+        return rc;
     }
 }

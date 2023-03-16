@@ -1,19 +1,19 @@
-package com.example.helloworld.productos;
+package com.example.helloworld.productos.modelo;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Getter
-@Setter
-@AllArgsConstructor
 @NoArgsConstructor
+@Setter
+@Getter
+@AllArgsConstructor
 
 public class Producto {
     private int id;
     private String nombre;
-    private double totalStars;
+    private float totalStars;
     private int votosTotales;
     private int vendidas;
     private double precio;
@@ -27,6 +27,8 @@ public class Producto {
     private int totalVentas;
     private int meses;
     private String especDia;
-    
+    private String descripcion;
+    private boolean activa;
+    private String nombreImagenPrincipal;
 }
 
