@@ -11,10 +11,12 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import mx.com.ultrasist.ci.generator.GenCode;
-import mx.com.ultrasist.ci.generator.model.Entidad;
+
+//import mx.com.ultrasist.ci.generator.GenCode;
+//import mx.com.ultrasist.ci.generator.model.Entidad;
 
 public class CodeGeneratorTest {
+    /** /
     private static Log logger = LogFactory.getLog(CodeGeneratorTest.class);
 
     private static void doit(GenCode codeGenerator) {
@@ -40,7 +42,7 @@ public class CodeGeneratorTest {
      * Test for Generator lib.
      * 
      * @param args No necesita parámetros de entrada
-     */
+     *
     public static void main(String... args) throws IOException {
         logger.info("Calculando la lista total de Entidades a procesar...");
         long start = System.currentTimeMillis();
@@ -116,6 +118,7 @@ public class CodeGeneratorTest {
         }
         return prop;
     }
+    /**/
 }
 
 
