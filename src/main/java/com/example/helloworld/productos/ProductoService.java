@@ -2,6 +2,9 @@ package com.example.helloworld.productos;
 
 import java.util.List;
 
+import com.example.helloworld.productos.model.Producto;
+import com.example.helloworld.productos.model.ResultadoConsulta;
+
 public interface ProductoService {
     /**
      * Retorna todos los productos guardados en la base de datos.
@@ -35,4 +38,6 @@ public interface ProductoService {
      * @param id Entero asociado a un posible producto.
      */
     void elimina(int id);
+    
+    ResultadoConsulta getBigResult(int id);
 }

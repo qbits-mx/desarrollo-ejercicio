@@ -1,10 +1,8 @@
-package com.example.helloworld.productos;
+package com.example.helloworld.productos.model;
 
 import lombok.*;
 
-@Getter
-@Setter
-@AllArgsConstructor
+@Data
 @NoArgsConstructor
 public class Producto {
     private int id;
@@ -23,4 +21,7 @@ public class Producto {
     private int totalVentas;
     private int meses;
     private String especDia;
+    private String descripcion;
+    private boolean activa;
+    private String nombreImagenPrincipal;
 }
