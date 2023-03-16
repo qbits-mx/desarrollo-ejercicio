@@ -1,5 +1,5 @@
 package com.example.helloworld;
-
+/** /
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Files;
@@ -12,9 +12,9 @@ import org.apache.commons.logging.LogFactory;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-//import mx.com.ultrasist.ci.generator.GenCode;
-//import mx.com.ultrasist.ci.generator.model.Entidad;
-
+import mx.com.ultrasist.ci.generator.GenCode;
+import mx.com.ultrasist.ci.generator.model.Entidad;
+/**/
 public class CodeGeneratorTest {
     /** /
     private static Log logger = LogFactory.getLog(CodeGeneratorTest.class);
