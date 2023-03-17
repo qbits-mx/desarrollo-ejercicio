@@ -30,5 +30,6 @@ public class Producto {
     private String descripcion;
     private boolean activa;
     private String nombreImagenPrincipal;
+    private String nombreVendedor;
 }
 

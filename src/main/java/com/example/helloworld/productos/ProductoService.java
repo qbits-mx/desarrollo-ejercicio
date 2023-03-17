@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.example.helloworld.productos.modelo.Producto;
 import com.example.helloworld.productos.modelo.ResultadoConsulta;
+import com.example.helloworld.productos.modelo.ResultadoConsultaCompras;
 
 public interface ProductoService {
     
@@ -52,4 +53,14 @@ public interface ProductoService {
      * @return objeto envolvente requerido de tipo resultado consulta.
      */
     ResultadoConsulta getResultadoConsulta(int idProducto);
+    
+    /**
+     * Retorna un objeto compuesto por dos objetos dependientes
+     * que constituyen en conjunto el json requerido por el cliente
+     * para conocer todas sus compras.
+     * 
+     * @param idProducto entero asosiado al id de un producto especifico.
+     * @return objeto envolvente requerido de tipo resultado consulta.
+     */
+    ResultadoConsultaCompras getResultadoConsultaCompras(int idUsuario);
 }

@@ -7,10 +7,9 @@ import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 import org.springframework.stereotype.Repository;
-
-import com.example.helloworld.productos.modelo.CaracteristicaProducto;
-import com.example.helloworld.productos.modelo.ImagenProducto;
+import com.example.helloworld.productos.modelo.DetallesCompras;
 import com.example.helloworld.productos.modelo.Producto;
+import com.example.helloworld.productos.modelo.ProductoRes;
 
 import org.apache.ibatis.annotations.ResultMap;
 import org.apache.ibatis.annotations.Results;
@@ -29,7 +28,8 @@ public interface ProductoMapper {
                 @Result(property = "numVentas",         column = "num_ventas"),
                 @Result(property = "idImagenPrincipal", column = "id_imagen_principal"),
                 @Result(property = "nombreImagenPrincipal", column = "nombre_imagen_principal"),
-                @Result(property = "especDia",          column = "espec_dia")
+                @Result(property = "especDia",          column = "espec_dia"),
+                @Result(property = "nombreVendedor",          column = "nombre_vendedor")
         })
     @Select("SELECT * FROM producto")
     List<Producto> getAll();
@@ -41,6 +41,15 @@ public interface ProductoMapper {
     @ResultMap("ProductoMap") 
     @Select("SELECT * FROM producto WHERE id = #{id} and activa=true")
     Producto selectActiveById(int id);
+    
+    @Results(
+            id="ProductoMap2", 
+            value = {
+                @Result(property = "nombreImagenPrincipal", column = "nombre_imagen_principal"),
+                @Result(property = "nombreVendedor",          column = "nombre_vendedor")
+        }) 
+    @Select("SELECT nombre, nombre_imagen_principal, nombre_vendedor FROM producto WHERE id = #{id}")
+    ProductoRes selectByIdComprasProducto(int id);
     
     @ResultMap("ProductoMap") 
     @Select("SELECT * FROM producto WHERE activa=true")
@@ -54,6 +63,23 @@ public interface ProductoMapper {
     
     @Delete("DELETE FROM producto WHERE id=#{id}")
     void delete(int id);
+    
+    @Results(
+            id="CompraMap", 
+            value = {
+                @Result(property = "idUsuario",        column = "id_usuario"),
+                @Result(property = "idProducto",      column = "id_producto"),
+                @Result(property = "fechaCompra",         column = "fecha_compra"),
+                @Result(property = "statusEnvio",       column = "status_envio"),
+                @Result(property = "statusEntrega",       column = "status_entrega"),
+                @Result(property = "llegoStatus",       column = "llego_status"),
+                @Result(property = "unidadesTotal",       column = "unidades_total")
+        })
+    @Select("SELECT * FROM detalle_compra WHERE id_usuario = #{id} and id = 1")
+    DetallesCompras selectByIdComprasUsuario(int id);
+    
+    @Select("SELECT id FROM detalle_compra WHERE id_usuario = #{id}")
+    List<String> selectByIdTodasComprasUsuario(int id);
     
     //@Results(value = {
             //@Result(property = "idProducto", column = "id_producto")})
