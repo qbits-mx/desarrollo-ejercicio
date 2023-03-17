@@ -2,6 +2,9 @@ package com.example.helloworld.productos;
 
 import java.util.List;
 
+import org.springframework.stereotype.*;
+
+@Service
 public class ProductoServiceImpl implements ProductoService{
   private ProductoMapper productMapper;
   public ProductoServiceImpl(ProductoMapper productMapper) {

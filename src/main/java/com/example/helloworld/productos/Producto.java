@@ -1,8 +1,14 @@
 package com.example.helloworld.productos;
 
-import lombok.Data;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-@Data
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class Producto {
   private int id;
   private String nuevo;
@@ -22,7 +28,7 @@ public class Producto {
   private String vendedor;
   private int ventas;
   private String disponibilidad;
-  private int garantisDias;
+  private int garantiaDias;
   private int garantiaTiempo;
   private int anios;
   private int puntos;
