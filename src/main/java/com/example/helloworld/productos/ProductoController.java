@@ -17,21 +17,21 @@ public class ProductoController {
   }
 
   @GetMapping(
-    value = "/producto",
+    value = "/productall",
     produces = "application/json; charset=utf-8")
   public List<Producto> listaTotal() {
     return this.productoService.tomaTodos();
   }
 
   @GetMapping(
-    value = "/one",
+    value = "/productid",
     produces = "application/json; charset=utf-8")
   public Producto ProductoIndividual(@RequestParam int id) {
     return productoService.tomaPorId(id);
   }
     
   @GetMapping(
-    value = "/products",
+    value = "/product",
     produces = "application/json; charset=utf-8")
     public ResultadoConsulta getProducto(@RequestParam int id) {
       return productoService.getResultadoConsulta(id);

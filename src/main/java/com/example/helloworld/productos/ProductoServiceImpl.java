@@ -2,50 +2,50 @@ package com.example.helloworld.productos;
 
 import java.util.List;
 
-import org.apache.catalina.webresources.Cache;
-import org.springframework.stereotype.*;
+import org.springframework.context.annotation.Primary;
+import org.springframework.stereotype.Service;
 
 import com.example.helloworld.productos.modelo.Producto;
 import com.example.helloworld.productos.modelo.ResultadoConsulta;
-
+@Primary
 @Service
 public class ProductoServiceImpl implements ProductoService{
-  private ProductoMapper productMapper;
+  private ProductoMapper productoMapper;
   public ProductoServiceImpl(ProductoMapper productMapper) {
-    this.productMapper = productMapper;
+    this.productoMapper = productoMapper;
   }
 
   @Override
   public List<Producto> tomaTodos() {
-    return productMapper.getAll();
+    return productoMapper.getAll();
   }
   @Override
   public Producto tomaPorId(int id) {
-    return productMapper.selectById(id);
+    return productoMapper.selectById(id);
   }
 
   @Override
   public void cambia(Producto producto) {
     int id = producto.getId();
-    Producto encontrado = this.tomaPorId(id);
+    Producto encontrado = tomaPorId(id);
     if (encontrado == null) {
-      productMapper.insert(producto);
+      productoMapper.insert(producto);
     } else {
-      productMapper.update(producto);
+      productoMapper.update(producto);
     }
   }
 
   @Override
   public void asesina(int id) {
-    productMapper.delete(id);
+    productoMapper.delete(id);
   }
 
   @Override
   public ResultadoConsulta getResultadoConsulta(int idProducto) {
-    List<String> caracteristicas = productMapper.getAllCaractForProducto(idProducto);
-    List<String> imagenes = productMapper.getAllImagesForProducto(idProducto);
-    Producto Producto = productMapper.selectById(idProducto);
-    ResultadoConsulta resultado = new ResultadoConsulta(Producto, caracteristicas, imagenes );
+    List<String> caracteristicas = productoMapper.getAllCaractForProducto(idProducto);
+    List<String> imagenes = productoMapper.getAllImagesForProducto(idProducto);
+    Producto Producto = productoMapper.selectById(idProducto);
+    ResultadoConsulta resultado = new ResultadoConsulta(Producto, caracteristicas, imagenes);
     return resultado;
   }
 }

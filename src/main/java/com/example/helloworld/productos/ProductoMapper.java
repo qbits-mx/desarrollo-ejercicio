@@ -3,11 +3,12 @@ package com.example.helloworld.productos;
 import java.util.List;
 
 import org.apache.ibatis.annotations.*;
-import org.springframework.stereotype.*;
+import org.springframework.stereotype.Repository;
 
-import com.example.helloworld.productos.modelo.CaracteristicaProducto;
-import com.example.helloworld.productos.modelo.ImagenProducto;
+// import com.example.helloworld.productos.modelo.CaracteristicaProducto;
+// import com.example.helloworld.productos.modelo.ImagenProducto;
 import com.example.helloworld.productos.modelo.Producto;
+
 @Repository
 public interface ProductoMapper {
 
@@ -19,7 +20,6 @@ public interface ProductoMapper {
             @Result(property = "productosUsados",       column = "productos_usados"),
             @Result(property = "garantiaDias",          column = "garantia_dias"),
             @Result(property = "garantiaTiempo",        column = "garantia_tiempo"),
-            @Result(property = "nombreImagenPrincipal", column = "nombre_imagen_principal"),
     })
   @Select("select * from producto")
   List<Producto> getAll();

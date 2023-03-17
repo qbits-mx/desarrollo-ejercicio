@@ -32,6 +32,7 @@ public class Producto {
   private int garantiaTiempo;
   private int anios;
   private int puntos;
+  private String descripcion;
   private boolean activa;
   private String nombreImagenPrincipal;
 
