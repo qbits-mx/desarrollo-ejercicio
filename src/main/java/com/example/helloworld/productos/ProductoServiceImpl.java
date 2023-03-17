@@ -11,7 +11,7 @@ import com.example.helloworld.productos.modelo.ResultadoConsulta;
 @Service
 public class ProductoServiceImpl implements ProductoService{
   private ProductoMapper productoMapper;
-  public ProductoServiceImpl(ProductoMapper productMapper) {
+  public ProductoServiceImpl(ProductoMapper productoMapper) {
     this.productoMapper = productoMapper;
   }
 
