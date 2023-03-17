@@ -45,7 +45,7 @@ public class ProductoServiceImpl implements ProductoService{
     List<String> caracteristicas = productoMapper.getAllCaractForProducto(idProducto);
     List<String> imagenes = productoMapper.getAllImagesForProducto(idProducto);
     Producto Producto = productoMapper.selectById(idProducto);
-    ResultadoConsulta resultado = new ResultadoConsulta(Producto, caracteristicas, imagenes);
+    ResultadoConsulta resultado = new ResultadoConsulta(Producto, imagenes, caracteristicas);
     return resultado;
   }
 }

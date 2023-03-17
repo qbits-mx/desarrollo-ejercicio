@@ -29,7 +29,7 @@ public class Producto {
   private int ventas;
   private String disponibilidad;
   private int garantiaDias;
-  private int garantiaTiempo;
+  private String garantiaTiempo;
   private int anios;
   private int puntos;
   private String descripcion;
