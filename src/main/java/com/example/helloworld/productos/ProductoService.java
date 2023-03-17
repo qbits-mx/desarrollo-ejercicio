@@ -2,6 +2,9 @@ package com.example.helloworld.productos;
 
 import java.util.List;
 
+import com.example.helloworld.productos.modelo.ConsultaFinal;
+import com.example.helloworld.productos.modelo.Producto;
+
 public interface ProductoService {
     /**
      * Retorna todos los productos guardados en la base de datos.
@@ -15,8 +18,7 @@ public interface ProductoService {
      * Si no existe ningún producto con ese id, este método
      * regresa un producto nulo (null)
      * 
-     * @param id Llave del producto a ser buscado
-     * @return Producto asociado al id proporcionado
+
      */
     Producto ObtenProductoPorId(int id);
     
@@ -24,7 +26,6 @@ public interface ProductoService {
      * Busca el producto dado y si no está en la base de datos, 
      * lo inserta, pero si está en la base, lo actualiza.
      * 
-     * @param producto Producto a ser insertado o actualizado
      */
     void guarda(Producto producto);
     
@@ -32,7 +33,14 @@ public interface ProductoService {
      * Elimina el producto cuyo id es el dado.
      * Si no existe ningún producto con ese di, no hace nada.
      * 
-     * @param id Entero asociado a un posible producto.
      */
     void elimina(int id);
+    /**
+     * Retorna un objeto compuesto por tres objetos dependientes
+     * que constituyen en conjunto el json requerido por el cliente.
+     * 
+
+     */
+    ConsultaFinal getConsultaFinal(int idProducto);
+
 }

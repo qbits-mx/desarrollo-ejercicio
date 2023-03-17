@@ -1,4 +1,4 @@
-package com.example.helloworld.productos;
+package com.example.helloworld.productos.modelo;
 
 import lombok.*;
 
@@ -9,18 +9,18 @@ import lombok.*;
 public class Producto {
     private int id;
     private String nombre;
-    private double totalStars;
-    private int votosTotales;
+    private double estrellas;
     private int vendidas;
     private double precio;
     private int mensualidad;
     private int minutos;
     private String direccion;
-    private int numVentas;
     private int totalProd;
-    private int unidades;
+    private int Existencia;
     private String tienda;
     private int totalVentas;
     private int meses;
     private String especDia;
 }
+
+
