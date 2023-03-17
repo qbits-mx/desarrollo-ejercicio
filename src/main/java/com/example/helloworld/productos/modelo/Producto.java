@@ -1,4 +1,4 @@
-package com.example.helloworld.productos;
+package com.example.helloworld.productos.modelo;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -32,5 +32,7 @@ public class Producto {
   private int garantiaTiempo;
   private int anios;
   private int puntos;
+  private boolean activa;
+  private String nombreImagenPrincipal;
 
 }
