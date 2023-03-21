@@ -1,5 +1,7 @@
 package com.example.helloworld.productos;
 
+import java.util.Date;
+
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -31,7 +33,7 @@ public class ProductoController {
             @RequestParam String user, 
             @RequestParam String password) {
         if(user.equals("gus") && password.equals("tavo")) {
-            String cadenota = "{'user':'gus', 'exp':'2023-03-22', 'rol':'admin', 'pago':true}";
+            String cadenota = "{'user':'gus', 'exp':'2023-03-22 14:01:37', 'rol':'admin', 'pago':true}";
             return cadenota + "_" + Digestion.generateMd5(cadenota);
         }
         return "{'error':'bad pasword or user'}";
@@ -49,11 +51,14 @@ public class ProductoController {
     }
 
     private boolean revisa(String tokenDado) {
+        // también si no me llega algo de la forma xxxxxx_yyyyy return false;
+        Date d = new Date();
+        // if d>fecha_en_token => return false;
         String[] arreglo = tokenDado.split("_"); // "gus_tavo_are_sando_profe"
         String cadenaOriginal = arreglo[0];
         String hash = arreglo[1];
         String digestion = Digestion.generateMd5(cadenaOriginal);
         return (digestion.equals(hash));
     }
-    
+
 }
