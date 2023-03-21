@@ -39,12 +39,11 @@ public class ProductoServiceImpl implements ProductoService {
         List<String> caracteristicas = productoMapper.getAllCaractForProducto(idProducto);
         List<String> imagenes = productoMapper.getAllImagesForProducto(idProducto);
         Producto producto = productoMapper.selectById(idProducto);
-        ConsultaFinal rc = new ConsultaFinal(producto, imagenes, caracteristicas);
-        return rc;
+        ConsultaFinal ted = new ConsultaFinal(producto, imagenes, caracteristicas);
+        return ted;
     }
     @Override
     public Producto ObtenProductoPorId(int id) {
-        // TODO Auto-generated method stub
         return null;
     }
 }
