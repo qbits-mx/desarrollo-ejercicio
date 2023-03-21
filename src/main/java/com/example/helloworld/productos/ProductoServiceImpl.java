@@ -4,34 +4,39 @@ import java.util.List;
 
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
+import com.example.helloworld.productos.modelo.Producto;
+import com.example.helloworld.productos.modelo.ResultadoConsulta;
 
 @Primary
 @Service
 public class ProductoServiceImpl implements ProductoService{
-    private ProductoMapper productMapper;
-    
-    public ProductoServiceImpl(ProductoMapper productMapper) {
-        this.productMapper = productMapper;
+    private ProductoMapper productoMapper;    
+    public ProductoServiceImpl(ProductoMapper productoMapper) {
+        this.productoMapper = productoMapper;
     }
     public List<Producto> obtenTodosLosProductos() {
-        return productMapper.getAll();
+        return productoMapper.getAll();
     }
-    public Producto ObtenProductoPorId(int id) {
-        return productMapper.selectById(id);
+    public Producto obtenProductoPorId(int id) {
+        return productoMapper.selectById(id);
     }
     public void guarda(Producto producto) {
         int id = producto.getId();
-        Producto encontrado = this.ObtenProductoPorId(id);
-        // si NO hay ningún renglón en la tabla "Persona",cuyo id sea
-        // el parámetro que recibe el método 'ObtenProductoPorId'
-        // entonces la variable "encontrado" será ingual a: null
+        Producto encontrado = this.obtenProductoPorId(id);
         if(encontrado==null) {
-            productMapper.insert(producto);
+            productoMapper.insert(producto);
         } else {
-            productMapper.update(producto);
+            productoMapper.update(producto);
         }
     }
     public void elimina(int id) {
-        productMapper.delete(id);
+        productoMapper.delete(id);
+    }
+    @Override
+    public ResultadoConsulta getResultadoConsulta(int idProducto) {
+        List<String> imagenes = productoMapper.getAllImagesForProducto(idProducto);
+        Producto producto = productoMapper.selectById(idProducto);
+        ResultadoConsulta rc = new ResultadoConsulta(producto, imagenes);
+        return rc;
     }
 }
