@@ -1,6 +1,10 @@
 package com.example.helloworld.productos;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.regex.Pattern;
+import java.util.regex.Matcher;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestHeader;
@@ -33,7 +37,7 @@ public class ProductoController {
             @RequestParam String user, 
             @RequestParam String password) {
         if(user.equals("gus") && password.equals("tavo")) {
-            String cadenota = "{'user':'gus', 'exp':'2023-03-22 14:01:37', 'rol':'admin', 'pago':true}";
+            String cadenota = "{'user':'gus', 'exp':'2020-02-20 14:01:27', 'rol':'admin', 'pago':true}";
             return cadenota + "_" + Digestion.generateMd5(cadenota);
         }
         return "{'error':'bad pasword or user'}";
@@ -52,12 +56,30 @@ public class ProductoController {
 
     private boolean revisa(String tokenDado) {
         // también si no me llega algo de la forma xxxxxx_yyyyy return false;
-        Date d = new Date();
-        // if d>fecha_en_token => return false;
-        String[] arreglo = tokenDado.split("_"); // "gus_tavo_are_sando_profe"
+        if (!tokenDado.contains("_")) {
+            return false;
+        }
+        
+        String[] arreglo = tokenDado.split("_");
         String cadenaOriginal = arreglo[0];
         String hash = arreglo[1];
         String digestion = Digestion.generateMd5(cadenaOriginal);
+
+        // if d>fecha_en_token => return false;
+        Date fechaActual = new Date();
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String fechaEnToken = "2023-03-22 14:01:29"; // Cambia esto por la fecha que obtienes del token
+
+        try {
+            Date fechaToken = sdf.parse(fechaEnToken);
+            if (fechaActual.compareTo(fechaToken) > 0) {
+                return false;
+            }
+        } catch (ParseException e) {
+            e.printStackTrace();
+            return false;
+        }
+
         return (digestion.equals(hash));
     }
 
