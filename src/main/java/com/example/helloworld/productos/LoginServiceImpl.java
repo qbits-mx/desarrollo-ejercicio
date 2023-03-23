@@ -31,11 +31,14 @@ public class LoginServiceImpl implements LoginService{
     }
     
     private List<String> revisa(String tokenDado) {
-        int[] errores = new int[6];//[0,0,0,0,0,0]
+        boolean[] errores = new boolean[6];//[0,0,0,0,0,0]
         // primer validación
         String[] arreglo = tokenDado.split("_");
         if(arreglo.length!=2) {
-            errores[0] = 1;
+            errores[0] = true;
+            List<String> retornoFatal = new ArrayList<>();
+            retornoFatal.add("'error':'Token corrupto'");
+            return retornoFatal;
         };
         
         String base64DeCadenaOriginal = arreglo[0];
@@ -44,7 +47,7 @@ public class LoginServiceImpl implements LoginService{
         // segunda validacion
         String digestion = Digestion.generateMd5(base64DeCadenaOriginal);
         if(!hash.equals(digestion)) {
-            errores[1] = 1;
+            errores[1] = true;
         };
         
         String cadenaOriginal = base64decode(base64DeCadenaOriginal);
@@ -65,21 +68,21 @@ public class LoginServiceImpl implements LoginService{
         long diff = currentDate-mili;
         long diff2 = 7200000;
         if(tolerancia < diff) {
-            errores[2] = 1;
+            errores[2] = true;
         };
         // cuarta validacion
         if(diff > diff2) {
-            errores[3] = 1;
+            errores[3] = true;
         };
         // quita validacion
         String rol = partesJson[2].substring(8, partesJson[2].length()-1);
         if(rol.equals("admin") == false) {
-            errores[4] = 1;
+            errores[4] = true;
         }
         String pago = partesJson[3].substring(8, partesJson[3].length()-1);
         // sexta validacion
         if (pago.equals("true") == false) {
-            errores[5] = 1;
+            errores[5] = true;
         }
         for (int i = 0; i < errores.length; i++) { //for loop to print the array  
             System.out.print( errores[i]+ " ");     
@@ -88,7 +91,7 @@ public class LoginServiceImpl implements LoginService{
         return cadenaDeErrores(errores);
     }
     
-    private List<String> cadenaDeErrores(int[] arrErrores) {
+    private List<String> cadenaDeErrores(boolean[] arrErrores) {
         String passN2 = getPassN();
         int interna = 0;
         String[] arr = {"'error':'La cadena tiene 2 o mas guines bajos'", 
@@ -101,7 +104,7 @@ public class LoginServiceImpl implements LoginService{
                 };
         List<String> out = new ArrayList<>();
         for (int i = 0; i < arrErrores.length; i++) {
-            if (arrErrores[i] == 1) {
+            if (arrErrores[i]) {
                 out.add(arr[i]);
                 interna++;
             }
