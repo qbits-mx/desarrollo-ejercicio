@@ -55,7 +55,7 @@ public class LoginServiceImpl implements LoginService {
         ObjectMapper mapper = new ObjectMapper();
         Contenido contenido = mapper.readValue(cadenaOriginal, Contenido.class);
         
-        long tolerancia = 1000*60*2;
+        long tolerancia = 1000*60*1;
         long currentDate = System.currentTimeMillis();
 
         // tercer y última validación
