@@ -1,0 +1,22 @@
+{
+  "name": "dockerized_segundo_examen",
+  "version": "1.0.0",
+  "description": "paquete segundo examen",
+  "main": "[\"java\",\"-jar\",\"micro1.jar\"]",
+  "scripts": {
+    "test": "segundo-examen"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/JC-ULTRA/segundo-examen.git"
+  },
+  "keywords": [
+    "segundo-examen"
+  ],
+  "author": "jc",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JC-ULTRA/segundo-examen/issues"
+  },
+  "homepage": "https://github.com/JC-ULTRA/segundo-examen#readme"
+}
