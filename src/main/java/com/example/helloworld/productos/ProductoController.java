@@ -1,7 +1,12 @@
 package com.example.helloworld.productos;
 
 import java.text.SimpleDateFormat;
+import java.util.Base64;
 import java.util.Date;
+import java.util.List;
+import java.text.ParseException;
+import java.util.regex.Pattern;
+import java.util.regex.Matcher;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestHeader;
@@ -16,9 +21,11 @@ import com.example.helloworld.utileria.Digestion;
 @RequestMapping(value="/hola")
 public class ProductoController {
     private ProductoService productoService;
+    private LoginService loginService;
     
-    public ProductoController(ProductoService productoService) {
+    public ProductoController(ProductoService productoService, LoginService loginService) {
         this.productoService = productoService;
+        this.loginService = loginService;
     }
     
     @GetMapping(
@@ -32,41 +39,28 @@ public class ProductoController {
             produces = "application/json; charset=utf-8")
     public String fakeLogin(
             @RequestParam String user, 
-            @RequestParam String fecha,
             @RequestParam String password) {
-        SimpleDateFormat sdf=new  SimpleDateFormat ("dd/MM/yyyy");   
-        SimpleDateFormat sf=new  SimpleDateFormat ("hh:mm:ss");   
-
-        Date d = new Date();
-        String sFecha= sdf.format(d);
-        String shora= sf.format(d);
-
-
-        if(user.equals("gus") && password.equals("tavo")&&  sFecha.equals(fecha)) {
-            String cadenota = "{'user':'gus', 'exp':'22-03-2023', 'rol':'admin', 'pago':true  'hora':"+ shora +"  }";
-            return cadenota + "_" + Digestion.generateMd5(cadenota);
-
-        }
-        return "{'error':'bad pasword or user'}";
+        return loginService.login(user, password);
     }
+    
     @GetMapping(
             value="/cambia", 
             produces = "application/json; charset=utf-8")
     public String fakeCambiaPassword(
             @RequestHeader String tokenDado,
             @RequestParam String nuevoPassword) {
-        if(revisa(tokenDado)) {
-            return "{'exito':'password cambiado'}";
-        }
-        return "{'error':'bad token'}";
+        return loginService.cambia(tokenDado, nuevoPassword);
     }
 
-    private boolean revisa(String tokenDado) {
-        String[] arreglo = tokenDado.split("_"); 
-        String cadenaOriginal = arreglo[0];
-        String hash = arreglo[1];
-        String digestion = Digestion.generateMd5(cadenaOriginal);
-        return (digestion.equals(hash));
-    }
 
+    
+//    public static void main(String...argv) {
+//        String q1 = "gustavo@_hola 123:456  .;-ñ";
+//        String q2="{'user':'gus_plus', 'exp':'2023-03-22 14:17:01'}";
+//        String enc = base64encode(q2);
+//        System.out.println(enc);
+//        
+//        String dec = base64decode(enc);
+//        System.out.println(dec);
+//    }
 }
