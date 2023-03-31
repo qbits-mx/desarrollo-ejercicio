@@ -21,7 +21,7 @@ public interface ProductoService {
      * @param id Llave del producto a ser buscado
      * @return Producto asociado al id proporcionado
      */
-    Producto ObtenProductoPorId(int id);
+    Producto obtenProductoPorId(int id);
     
     /**
      * Busca el producto dado y si no está en la base de datos, 

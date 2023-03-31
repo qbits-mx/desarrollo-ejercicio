@@ -9,8 +9,11 @@ import org.springframework.stereotype.Service;
 
 import com.example.helloworld.utilerias.Digestion;
 
+import lombok.extern.slf4j.Slf4j;
+
 @Primary
 @Service
+@Slf4j
 
 public class LoginServiceImpl implements LoginService{
     private String passN;
@@ -39,7 +42,7 @@ public class LoginServiceImpl implements LoginService{
             List<String> retornoFatal = new ArrayList<>();
             retornoFatal.add("'error':'Token corrupto'");
             return retornoFatal;
-        };
+        }
         
         String base64DeCadenaOriginal = arreglo[0];
         String hash = arreglo[1];
@@ -48,16 +51,10 @@ public class LoginServiceImpl implements LoginService{
         String digestion = Digestion.generateMd5(base64DeCadenaOriginal);
         if(!hash.equals(digestion)) {
             errores[1] = true;
-        };
+        }
         
         String cadenaOriginal = base64decode(base64DeCadenaOriginal);
         String[] partesJson = cadenaOriginal.split(",");
-        // {'user':'gus_1',  'exp':'1679509695186',  'rol':'admin',  'pago':true}
-        
-        // {'user':'gus_1'
-        //  'exp':'1679509695186' 
-        //  'rol':'admin'
-        //  'pago':true}
         String milisegundos = partesJson[1].substring(8, partesJson[1].length()-1);
         
         long mili = Long.parseLong(milisegundos);
@@ -69,23 +66,23 @@ public class LoginServiceImpl implements LoginService{
         long diff2 = 7200000;
         if(tolerancia < diff) {
             errores[2] = true;
-        };
+        }
         // cuarta validacion
         if(diff > diff2) {
             errores[3] = true;
-        };
+        }
         // quita validacion
         String rol = partesJson[2].substring(8, partesJson[2].length()-1);
-        if(rol.equals("admin") == false) {
+        if(rol.equals("admin")) {
             errores[4] = true;
         }
         String pago = partesJson[3].substring(8, partesJson[3].length()-1);
         // sexta validacion
-        if (pago.equals("true") == false) {
+        if (pago.equals("true")) {
             errores[5] = true;
         }
         for (int i = 0; i < errores.length; i++) { //for loop to print the array  
-            System.out.print( errores[i]+ " ");     
+            log.info( errores[i]+ " ");     
             }
 
         return cadenaDeErrores(errores);
@@ -112,7 +109,6 @@ public class LoginServiceImpl implements LoginService{
         if (interna == 0) {
             out.add(arr[6]);
         }
-        System.out.println(out);
         return out;
     }
     
@@ -120,7 +116,7 @@ public class LoginServiceImpl implements LoginService{
         return new String(Base64.getUrlDecoder().decode(source.getBytes()));
     }
     public static String base64encode(String source) {
-        return new String(Base64.getUrlEncoder().encode(source.getBytes())).replaceAll("=", "");
+        return new String(Base64.getUrlEncoder().encode(source.getBytes())).replace("=", "");
     }
     private boolean consultaBaseDeDatos(String user, String password) {
         if(user.equals("gus") && password.equals("tavo")) return true;

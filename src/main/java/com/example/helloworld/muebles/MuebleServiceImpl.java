@@ -17,10 +17,8 @@ public class MuebleServiceImpl implements MueblesService {
 	        return muebleMapper.getById(7534);
 	    }
 	    @Override
-	    public List<Mueble> getAll() {
-	    	List<Mueble> resultado = muebleMapper.getAll();
-	    	System.out.println(resultado);
-	        return resultado;
+	    public List<Mueble> getAll() { 
+	        return muebleMapper.getAll();
 	    }
 
 

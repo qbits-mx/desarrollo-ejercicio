@@ -5,6 +5,9 @@ import java.text.SimpleDateFormat;
 import java.util.Base64;
 import java.util.Date;
 
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 
 public class Validaciones {
     
@@ -21,14 +24,14 @@ public class Validaciones {
             boolean result3 = validacionGuion(arreglo);// validacion de existencia de guion
             boolean result4 = validacionDeFormato(token);// validacion de formato xxxx_xxxxxx
             if (result1&&result2&&result3&&result4) {//validacion de que se cumplan las 4 condiciones de validacion
-                System.out.println("token valido");
+                log.info("token valido");
                 return true;
             }else {
-                System.out.println("token invalido");
+                log.info("token invalido");
                 return false;
             }
         } catch (Exception e) {
-            System.out.println("token malo");
+            log.info("token malo");
             return false;
         }
     }
@@ -38,7 +41,7 @@ public class Validaciones {
         DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         String strDate = dateFormat.format(d); //strDate es la fhecha y hora en cadena de texto 2023-32-21 02:32:01
         int result = strDate.compareTo(fechaValidar);
-        return result  <= 0 ? true : false;
+        return result  <= 0;
     }
     private static boolean validacionGuion(String[] tokenDado) { // valida que solo exista un guion en toda la cadena
         return tokenDado.length == 2;
@@ -46,10 +49,7 @@ public class Validaciones {
     
     private static boolean validacionDeFormato(String tokenDado2) { // valida el formato xxxx_xxxxx
         int resultA = tokenDado2.indexOf("_");
-        if ((resultA != 0)&&(resultA != tokenDado2.length())) {
-            return true;
-        }
-        return false;
+        return ((resultA != 0)&&(resultA != tokenDado2.length()));
     }
     
     public String base64decode(String source) {
@@ -57,10 +57,6 @@ public class Validaciones {
     }
     public String base64encode(String source) {
         String res = new String(Base64.getUrlEncoder().encode(source.getBytes()));
-        return res.replaceAll("=", "");
+        return res.replace("=", "");
     }
-    
-    /*public static void main(String...argv) {
-        validarToken("{'user':'gus', 'exp':'2023-03-22 14:01:37', 'rol':'admin', 'pago':'true'}_595f678fbd766546425b862171b8dc88");
-    }*/
 }

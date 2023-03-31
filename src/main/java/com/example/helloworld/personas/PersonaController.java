@@ -38,16 +38,8 @@ public class PersonaController {
             value= "/pregunta", 
             produces = "application/json; charset=utf-8")
     public Persona sendGreetingsGET() {
-        //Persona p = new Persona(1, "gus1GET", "arellano", "sandoval", 123.32F, true);
-//        Persona q = tavito();
-//        return q;
         return tavito();
-    }
-//    @PutMapping(value= "/pregunta", produces = "application/json; charset=utf-8")
-//    public Persona sendGreetingPUT() {
-//        Persona p = new Persona(1, "gus1PUT", "arellano", "sandoval", 123.32F, true);
-//        return p;
-//    }    
+    }  
     @PostMapping(value= "/pregunta", produces = "application/json; charset=utf-8")
     public Persona tavito() {
         return primeraImplementacion.calcula("algo", "pedregal", "gus1DELETE", "arellanbo", "sandoval");
@@ -77,8 +69,6 @@ public class PersonaController {
     public String sendGreetings2(
             @RequestHeader String apellido,
             @RequestParam String nombre) {
-        //int a=0;
-        //System.out.println(1/a);
         return "{'gus':'"+nombre+apellido+"','edad':21}".replace('\'', '\"');
     }
     
@@ -86,7 +76,6 @@ public class PersonaController {
             value= "/guardaPersona", 
             produces = "application/json; charset=utf-8")
     public Persona sendGreetings3(@RequestBody Persona p) {
-        System.out.println(p.getNombre());
         return p;
     }
     

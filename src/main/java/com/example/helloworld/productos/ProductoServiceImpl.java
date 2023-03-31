@@ -22,7 +22,7 @@ public class ProductoServiceImpl implements ProductoService{
     public List<Producto> obtenTodosLosProductos() {
         return productMapper.getAll();
     }
-    public Producto ObtenProductoPorId(int id) {
+    public Producto obtenProductoPorId(int id) {
         return productMapper.selectById(id);
     }
     public ResultadoConsulta getBigResult(int id) {
@@ -37,7 +37,7 @@ public class ProductoServiceImpl implements ProductoService{
     }
     public void guarda(Producto producto) {
         int id = producto.getId();
-        Producto encontrado = this.ObtenProductoPorId(id);
+        Producto encontrado = this.obtenProductoPorId(id);
         // si NO hay ningún renglón en la tabla "Persona",cuyo id sea
         // el parámetro que recibe el método 'ObtenProductoPorId'
         // entonces la variable "encontrado" será ingual a: null
