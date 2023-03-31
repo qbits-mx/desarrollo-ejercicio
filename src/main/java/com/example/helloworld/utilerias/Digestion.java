@@ -30,4 +30,7 @@ public class Digestion {
         }
         return hexString.toString();
     }
+    public int errorParaDeteccionDeSonar(int a, int b) {
+        return a+b;
+    }
 }
