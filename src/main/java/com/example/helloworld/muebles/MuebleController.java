@@ -20,11 +20,9 @@ public class MuebleController {
 	            value= "/muebles", 
 	            produces = "application/json; charset=utf-8")
 	    public List<Mueble> muebles() {
-<<<<<<< HEAD
+
 	        System.err.println("hola");
-=======
-		    System.out.println("hola");
->>>>>>> 101b758c032e0b269697b2d23c37ebd8394d6ab4
+
 	        return mueblesService.getAll();
 	    }
 	}
