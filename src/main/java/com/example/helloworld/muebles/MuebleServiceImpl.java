@@ -1,10 +1,11 @@
 package com.example.helloworld.muebles;
 
 import java.util.List;
-
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 @Primary
 @Service
 public class MuebleServiceImpl implements MueblesService {
@@ -19,7 +20,7 @@ public class MuebleServiceImpl implements MueblesService {
 	    @Override
 	    public List<Mueble> getAll() {
 	    	List<Mueble> resultado = muebleMapper.getAll();
-	    	System.out.println(resultado);
+	    	log.info(String.valueOf(resultado));
 	        return resultado;
 	    }
 

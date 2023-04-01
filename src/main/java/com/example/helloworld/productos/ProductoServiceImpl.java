@@ -38,9 +38,6 @@ public class ProductoServiceImpl implements ProductoService{
     public void guarda(Producto producto) {
         int id = producto.getId();
         Producto encontrado = this.ObtenProductoPorId(id);
-        // si NO hay ningún renglón en la tabla "Persona",cuyo id sea
-        // el parámetro que recibe el método 'ObtenProductoPorId'
-        // entonces la variable "encontrado" será ingual a: null
         if(encontrado==null) {
             productMapper.insert(producto);
         } else {
