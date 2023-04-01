@@ -8,6 +8,7 @@
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>2.7.6</version>
     </parent>
+    
 
     <groupId>com.example</groupId>
     <artifactId>spring-boot-2-hello-world</artifactId>
@@ -55,14 +56,40 @@
         </dependency> 
 
     </dependencies>
+    
 
     <build>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
-        </plugins>
+                          </plugin>
+                           <plugin>
+  
+      <groupId>org.jacoco</groupId>
+     <artifactId>jacoco-maven-plugin</artifactId>
+      <version>0.8.7</version>
+      <executions>
+        <execution>
+          <id>prepare-agent</id>
+          <goals>
+            <goal>prepare-agent</goal>
+          </goals>
+        </execution>
+        <execution>
+          <id>report</id>
+          <goals>
+            <goal>report</goal>
+          </goals>
+          <configuration>
+            <formats>
+              <format>XML</format>
+            </formats>
+          </configuration>
+        </execution>
+      </executions>
+    </plugin>
+   </plugins>
     </build>
 
 </project>
