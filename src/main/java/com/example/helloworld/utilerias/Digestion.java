@@ -6,6 +6,8 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
 public class Digestion {
+    private Digestion() {
+  }
     public static String generateMd5(String input) {
         String palablraSecreta="Arellano1967";
         byte[] arreglo;
@@ -29,8 +31,5 @@ public class Digestion {
             hexString.insert(0, '0');
         }
         return hexString.toString();
-    }
-    public int errorParaDeteccionDeSonar(int a, int b) {
-        return a+b;
     }
 }

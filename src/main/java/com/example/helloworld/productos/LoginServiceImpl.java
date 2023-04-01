@@ -15,7 +15,6 @@ public class LoginServiceImpl implements LoginService {
     @Override
     public String login(String user, String password) {
         if (consultaBaseDeDatos(user, password)) {
-            // numero de milisegundos transcurridos desde el 1 de enero de 1970 hasta el milisegundo actual
             long momentoDeEmision = System.currentTimeMillis();
             String payload = "{'exp':'"+momentoDeEmision+"', 'user':'"+user+"', 'pago':true, 'rol':'admin'}";
             String cadenota = base64encode(payload.replace('\'', '\"'));
@@ -31,37 +30,34 @@ public class LoginServiceImpl implements LoginService {
             switch (revisado) {
                 case 1: return "{'error':'cadena inválida 1'}";
                 case 2: return "{'error':'cadena inválida 2'}";
-                case 3: return "{'error':'cadena inválida 3'}";
+                case 3:return "{'error':'cadena inválida 3'}";
+                default: return "{'exito':'password cambiado por " + nuevoPassword + "'}";
             }
-            return "{'exito':'password cambiado por " + nuevoPassword + "'}";
         } catch (Exception e) {
             return "{'error':'cadena inválida'}";
         }
     }
     
     private int revisa(String tokenDado) throws Exception {
-        // primera validación (len==2 implica que hay cosas antes y después del _ )
         String[] arreglo = tokenDado.split("_");
         if(arreglo.length!=2) return 1;
         
         String base64DeCadenaOriginal = arreglo[0];
         String hash = arreglo[1];
         
-        // segunda validacion
         String digestion = Digestion.generateMd5(base64DeCadenaOriginal);
         if(!hash.equals(digestion)) return 2;
         
         String cadenaOriginal = base64decode(base64DeCadenaOriginal);
         ObjectMapper mapper = new ObjectMapper();
         Contenido contenido = mapper.readValue(cadenaOriginal, Contenido.class);
-        
-        long tolerancia = 1000*60*2;
+        long op = 1000 * 2;
+        long minutos = 60;
+        long tolerancia = op*minutos;
         long currentDate = System.currentTimeMillis();
 
-        // tercer y última validación
         long diff = currentDate-contenido.getExp();
         if(tolerancia < diff) return 3;
-
         return 0;
     }
     
@@ -69,7 +65,7 @@ public class LoginServiceImpl implements LoginService {
         return new String(Base64.getUrlDecoder().decode(source.getBytes()));
     }
     public static String base64encode(String source) {
-        return new String(Base64.getUrlEncoder().encode(source.getBytes())).replaceAll("=", "");
+        return new String(Base64.getUrlEncoder().encode(source.getBytes())).replace("=", "");
     }
     private boolean consultaBaseDeDatos(String user, String password) {
         if(user.equals("gus") && password.equals("tavo")) return true;
@@ -79,6 +75,6 @@ public class LoginServiceImpl implements LoginService {
         if(user.equals("gustavo") && password.equals("tavo@")) return true;
         if(user.equals("adolfo") && password.equals("secreto")) return true;
         if(user.equals("arell") && password.equals("torres")) return true;
-        return false;
+      else return false;
     }
 }
