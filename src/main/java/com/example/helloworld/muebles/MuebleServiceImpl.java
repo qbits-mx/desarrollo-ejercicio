@@ -8,7 +8,8 @@ import org.springframework.stereotype.Service;
 @Primary
 @Service
 public class MuebleServiceImpl implements MueblesService {
-	    private MuebleMapper muebleMapper;
+	    private static final String String = null;
+        private MuebleMapper muebleMapper;
 	    
 	    public MuebleServiceImpl(MuebleMapper muebleMapper) {
 	        this.muebleMapper = muebleMapper;
@@ -18,9 +19,7 @@ public class MuebleServiceImpl implements MueblesService {
 	    }
 	    @Override
 	    public List<Mueble> getAll() {
-	    	List<Mueble> resultado = muebleMapper.getAll();
-	    	List<Mueble> resu = null;
-            resultado= resu;
+	    	List<Mueble> resultado = getAll();
 	        return resultado;
 	    }
 
