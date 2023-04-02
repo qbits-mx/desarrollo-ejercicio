@@ -1,10 +1,14 @@
 package com.example.helloworld.utileria;
 
 import java.math.BigInteger;
+
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
+import lombok.NoArgsConstructor;
+
+@NoArgsConstructor
 public class Digestion {
         public static String generateMd5(String input) {
             String palablraSecreta="Arellano1967";

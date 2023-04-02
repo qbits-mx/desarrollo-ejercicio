@@ -20,9 +20,6 @@ public class MuebleController {
 	            value= "/muebles", 
 	            produces = "application/json; charset=utf-8")
 	    public List<Mueble> muebles() {
-
-	        System.err.println("hola");
-
 	        return mueblesService.getAll();
 	    }
 	}

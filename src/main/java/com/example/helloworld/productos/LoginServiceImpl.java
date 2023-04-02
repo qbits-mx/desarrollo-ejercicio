@@ -73,12 +73,6 @@ public class LoginServiceImpl implements LoginService {
     }
     private boolean consultaBaseDeDatos(String user, String password) {
         if(user.equals("gus") && password.equals("tavo")) return true;
-        if(user.equals("gus1") && password.equals("tavo1")) return true;
-        if(user.equals("gus_1") && password.equals("tavo_1")) return true;
-        if(user.equals("gus:1") && password.equals("tavo:1")) return true;
-        if(user.equals("gustavo") && password.equals("tavo@")) return true;
-        if(user.equals("adolfo") && password.equals("secreto")) return true;
-        if(user.equals("arell") && password.equals("torres")) return true;
         return false;
     }
 }
