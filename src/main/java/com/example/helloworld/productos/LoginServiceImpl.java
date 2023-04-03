@@ -15,7 +15,6 @@ public class LoginServiceImpl implements LoginService {
     @Override
     public String login(String user, String password) {
         if (consultaBaseDeDatos(user, password)) {
-            // numero de milisegundos transcurridos desde el 1 de enero de 1970 hasta el milisegundo actual
             long momentoDeEmision = System.currentTimeMillis();
             String payload = "{'exp':'"+momentoDeEmision+"', 'user':'"+user+"', 'pago':true, 'rol':'admin'}";
             String cadenota = base64encode(payload.replace('\'', '\"'));
@@ -58,7 +57,6 @@ public class LoginServiceImpl implements LoginService {
         long tolerancia = 1000*60*2;
         long currentDate = System.currentTimeMillis();
 
-        // tercer y última validación
         long diff = currentDate-contenido.getExp();
         if(tolerancia < diff) return 3;
 
@@ -69,7 +67,7 @@ public class LoginServiceImpl implements LoginService {
         return new String(Base64.getUrlDecoder().decode(source.getBytes()));
     }
     public static String base64encode(String source) {
-        return new String(Base64.getUrlEncoder().encode(source.getBytes())).replaceAll("=", "");
+        return new String(Base64.getUrlEncoder().encode(source.getBytes())).replace("=", "");
     }
     private boolean consultaBaseDeDatos(String user, String password) {
         if(user.equals("gus") && password.equals("tavo")) return true;
