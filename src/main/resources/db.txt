@@ -1,5 +1,5 @@
-docker run -p 3307:3306 -d --name data -e MYSQL_ROOT_PASSWORD=garellano mariadb/server:10.3
-docker exec -it data bash
+docker run -p 3307:3306 -d --name dato -e MYSQL_ROOT_PASSWORD=garellano mariadb/server:10.3
+docker exec -it dato bash
 mysql -uroot -pgarellano
 
 drop database publisher;
@@ -36,6 +36,56 @@ INSERT INTO Mueble VALUES(2,'mesa','verde',2245.54,false);
 INSERT INTO Mueble VALUES(3,'silla','azul',3245.54,true);
 INSERT INTO Mueble VALUES(4,'ropero','negra',4245.54,false);
 INSERT INTO Mueble VALUES(5,'estufa','blanco',5245.54,true);
+
+INSERT INTO datos_personales VALUES(50,'Gustavo','Rangel','Rojas',01090,'guschiha@gmail.com',78357392,'Gallus');
+
+INSERT INTO alta_de_anuncio VALUES(50,'trabajo de idols en mexico especialistas en entretenimiento','grandes ofertas todos los dias etc, etc etc ','20230412',01099,94859324,'underground','https://es-es.facebook.com/gustavorangeluchija/', activo);
+
+
+CREATE TABLE datos_personales (
+    id INT NOT NULL,
+    nombre VARCHAR(64),
+    ap_paterno VARCHAR(64),
+    ap_materno VARCHAR(64),
+    cp int(5),
+    email VARCHAR(64),
+    tel_personal int(10),
+    nick_name VARCHAR(64),
+    PRIMARY KEY(id)
+);
+    private String nombre;
+    private String apPaterno;
+    private String apMaterno;
+    private int cp;
+    private String email;
+    private int TelPersonal;
+    private String nickName;
+    ---------------------------------------------------------------------------
+    
+CREATE TABLE alta_de_anuncio (
+    id INT NOT NULL,
+    descripcion_corta VARCHAR(120),
+    descripcion_larga VARCHAR(2000),
+    fecha_de_carga int(8),
+    cp int(5),
+    tel_trabajo int(10),
+    negocio VARCHAR(30),
+    link VARCHAR(120),
+    activo boolean,
+    PRIMARY KEY(id)
+);
+
+
+
+CREATE TABLE imagenes (
+    id INT NOT NULL,
+    1d_usuario int,
+    nombre_de_la_imagen VARCHAR(2000),
+    activo boolean,
+    PRIMARY KEY(id)
+);
+INSERT INTO imagenes VALUES(1004,50,'/2023/04/13/M7tQJ3icTmgbJw6K.jpg', activo);
+
 
 
 

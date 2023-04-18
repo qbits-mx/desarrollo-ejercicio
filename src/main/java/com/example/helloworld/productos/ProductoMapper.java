@@ -46,13 +46,13 @@ public interface ProductoMapper {
     void delete(int id);
     
     @Results(value = {
-            @Result(property = "idProducto", column = "id_producto")})
-    @Select("select id, id_producto, nombre, activa from imagen_producto where id_producto=#{idProducto}")
+            @Result(property = "idProducto", column = "idProducto")})
+    @Select("select id, idProducto,descripcion, activa from imagen_producto where id_producto=#{idProducto}")
     List<ImagenProducto> getAllImagesForProducto(int idProducto);
 
     @Results(value = {
-            @Result(property = "idProducto", column = "id_producto")})
-    @Select("select id, id_producto, descripcion, activa from caracteristica_producto where id_producto=#{idProducto}")
+            @Result(property = "idProducto", column = "idProducto")})
+    @Select("select id, idProducto, descripcion, activa from caracteristica_producto where idProducto=#{idProducto}")
     List<CaracteristicaProducto> getAllCaractForProducto(int idProducto);
 
 }
