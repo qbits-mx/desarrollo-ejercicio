@@ -1,0 +1,9 @@
+ -Dsonar.login=77aaaf70d62066b1b63c61d32e936818bfbb319c \
+    -Dsonar.host.url=https://sonarcloud.io/ \
+    -Dsonar.organization= \
+    -Dsonar.projectKey=kebblar_desarrollo_ejrcicio
+mvn clean verify sonar:sonar \
+    -Dsonar.login=019747608fcd593e12e16da32dac804cd6419916 \
+    -Dsonar.host.url=https://sonarcloud.io/ \
+    -Dsonar.organization=kebblar \
+    -Dsonar.projectKey=kebblar_desarrollo_ejercicio
