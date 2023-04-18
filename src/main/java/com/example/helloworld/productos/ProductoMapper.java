@@ -29,20 +29,20 @@ public interface ProductoMapper {
             @Result(property = "nombreImagenPrincipal", column = "nombre_imagen_principal"),
             @Result(property = "especDia",          column = "espec_dia")
     })
-    @Select("select * from Producto")
+    @Select("select * from producto")
     List<Producto> getAll();
     
     @ResultMap("ProductoMap")
-    @Select("select * from Producto where id=#{id}")
+    @Select("select * from producto where id=#{id}")
     Producto selectById(int id);
     
-    @Insert("insert into Producto values(#{id}, #{nombre}, ...)")
+    @Insert("insert into producto values(#{id}, #{nombre}, ...)")
     void insert(Producto producto);
     
-    @Update("update Producto set nombre=#{nombre}, ... where id=#{id}")
+    @Update("update producto set nombre=#{nombre}, ... where id=#{id}")
     void update(Producto producto);
     
-    @Delete("delete from Producto where id=#{id}")
+    @Delete("delete from producto where id=#{id}")
     void delete(int id);
     
     @Results(value = {
