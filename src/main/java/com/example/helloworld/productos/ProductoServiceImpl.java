@@ -33,7 +33,7 @@ public class ProductoServiceImpl implements ProductoService{
         List<String> carRes = caracteristicas.stream().map(p-> p.getDescripcion()).collect(Collectors.toList());
         List<String> imgRes = imagenes.stream().map(p -> p.getNombre()).collect(Collectors.toList());
 
-        return new ResultadoConsulta(producto, carRes, imgRes);
+        return new ResultadoConsulta();
     }
     public void guarda(Producto producto) {
         int id = producto.getId();

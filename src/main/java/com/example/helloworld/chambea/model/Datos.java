@@ -1,5 +1,9 @@
-package com.example.helloworld.chambea;
+package com.example.helloworld.chambea.model;
 
+import lombok.*;
+import lombok.NoArgsConstructor;
+@Data
+@NoArgsConstructor
 public class Datos {
     private int idUsuario;
     private String nombre;
