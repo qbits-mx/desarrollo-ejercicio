@@ -11,34 +11,33 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.helloworld.oficios.model.Anuncio;
 
-
 @RestController
 @RequestMapping(value = "/api")
 public class AnuncioController {
-  private AnuncioService anuncioService;
+    private AnuncioService anuncioService;
 
-  public AnuncioController(AnuncioService anuncioService) {
-    this.anuncioService = anuncioService;
-  }
+    public AnuncioController(AnuncioService anuncioService) {
+        this.anuncioService = anuncioService;
+    }
 
-  @GetMapping(value = "/get-ads", produces = "application/json; charset=utf-8")
-  public List<Anuncio> listaTotal() {
-    return this.anuncioService.getAll();
-  }
+    /** anuncio */
+    @DeleteMapping(value = "/jc/delete-anuncio", produces = "application/json; charset=utf-8")
+    public void deleteAnuncio(int id) {
+        anuncioService.elimina(id);
+    }
 
-  @GetMapping(value = "/get-ads-byid", produces = "application/json; charset=utf-8")
-  public Anuncio AnuncioIndividual(@RequestParam int id) {
-    return anuncioService.selectById(id);
-  }
+    @GetMapping(value = "/jc/anuncios-publicados", produces = "application/json; charset=utf-8")
+    public List<Anuncio> anuncios() {
+        return this.anuncioService.getAll();
+    }
 
-  @DeleteMapping(value = "/delete-ads-byid", produces = "application/json; charset=utf-8")
-  public void borra(int id) {
-    anuncioService.elimina(id);
-  }
+    @GetMapping(value = "/jc/anuncio", produces = "application/json; charset=utf-8")
+    public Anuncio idAnunciante(@RequestParam int id) {
+        return anuncioService.selectById(id);
+    }
 
-  @PostMapping(value = "/update-ads", produces = "application/json; charset=utf-8")
-  public void save(Anuncio anuncio) {
-    anuncioService.guarda(anuncio);
-  }
-
+    @PostMapping(value = "/jc/agrega-anuncio", produces = "application/json; charset=utf-8")
+    public void carga(Anuncio anuncio) {
+        anuncioService.guarda(anuncio);
+    }
 }

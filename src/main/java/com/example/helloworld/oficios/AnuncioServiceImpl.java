@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 
 import com.example.helloworld.oficios.model.Anuncio;
 
-
 @Primary
 @Service
 public class AnuncioServiceImpl implements AnuncioService {
