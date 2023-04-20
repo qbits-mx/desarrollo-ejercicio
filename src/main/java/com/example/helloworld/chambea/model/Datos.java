@@ -5,7 +5,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 public class Datos {
-    private int idUsuario;
+    private int id;
     private String nombre;
     private String apPaterno;
     private String apMaterno;

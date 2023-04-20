@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.helloworld.chambea.model.Datos;
+import com.example.helloworld.chambea.model.DatosAlta;
 import com.example.helloworld.chambea.model.Resultados;
 import com.example.helloworld.muebles.Mueble;
 import com.example.helloworld.productos.InvokeRemoteRestService;
@@ -55,43 +56,11 @@ public class  ChambeaController {
     @GetMapping(
             value= "/all-data", 
             produces = "application/json; charset=utf-8")
-    public  List<String> DatosAlta(
+    public   List<DatosAlta> gettwo(
             @RequestHeader int id,
             @RequestHeader String jwt) {
-        return chambeaService.DatosAlta( id); 
+        return chambeaService.gettwo( id); 
     }
-       @GetMapping(
-               value= "/datos-personales", 
-               produces = "application/json; charset=utf-8")
-       public Datos sendGreetingsGET() {
-           return Amadeus();
-       }
-       @PostMapping(value= "/datos-personales", produces = "application/json; charset=utf-8")
-       public Datos Amadeus() {
-           return chambeaService.calcula(null);
-       }
-       @PostMapping(
-               value= "/guardaPersona", 
-               produces = "application/json; charset=utf-8")
-       public Datos sendGreetings3(@RequestHeader int idUser ) {
-           return chambeaService.calcula(null);
-       }
-       @DeleteMapping(value= "/datos", produces = "application/json; charset=utf-8")
-       public Datos sendGreetingDelete(           
-               @RequestHeader int idUsuario) {
-           return chambeaService.calcula(null);
-       } 
-       
-
-       @GetMapping(
-               path = "/user-pricipa-data", 
-               produces = "application/json; charset=utf-8")
-       public Resultados getUserPrincipal(
-               @RequestHeader int idUsuario,
-               @RequestHeader String jwt 
-               ){
-           return chambeaService.getBigResult(idUsuario);
-       }
        
 
        

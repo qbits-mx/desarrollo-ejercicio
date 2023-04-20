@@ -3,17 +3,16 @@ package com.example.helloworld.chambea;
 import java.util.List;
 
 import com.example.helloworld.chambea.model.Datos;
+import com.example.helloworld.chambea.model.DatosTgc;
 import com.example.helloworld.chambea.model.Resultados;
-
+import com.example.helloworld.chambea.model.DatosAlta;
 public interface ChambeaService {
         /**
          * Retorna todos los productos guardados en la base de datos.
+         * @param id 
          * @return Lista de Productos provenientes de la base de datos.
          */
-        List<Datos> obtenTodosLosDatos();
-        Datos cal(int idUsuario, String nombre, String apPaterno, String apMaterno,int cp, String email,int telPersonal,String nickName );
-        
-        List<String> DatosAlta(int id);
+        List<DatosAlta> gettwo(int id);
         
         /**
          * Regresa un objeto de tipo 'Producto' el cual
@@ -41,9 +40,6 @@ public interface ChambeaService {
          * @param id Entero asociado a un posible producto.
          */
         void elimina(int id);
-        
-        Resultados getBigResult(int id);
 
-        Datos calcula(List<String> DatosAlta);
     }
 

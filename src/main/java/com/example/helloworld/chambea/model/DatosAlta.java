@@ -18,8 +18,4 @@ public class DatosAlta {
     private int TelTrabajo;
     private String Negocio;
     private String Link;
-    public static Object stream() {
-        // TODO Auto-generated method stub
-        return null;
-    }
 }

@@ -12,20 +12,21 @@ import com.example.helloworld.chambea.model.DatosTgc;
 import com.example.helloworld.chambea.model.Resultados;
 @Primary
 @Service
-public abstract class ChambeaServiceImpl implements ChambeaService{
+public  class ChambeaServiceImpl implements ChambeaService{
     private ChambeaMapper chambeaMapper;
     public ChambeaServiceImpl(ChambeaMapper chambeaMapper) {
         this.chambeaMapper = chambeaMapper;
     }
-    public List<Datos> obtenTodosLosDatos() {
-        return chambeaMapper.getAllOne();
+    public List<DatosAlta> gettwo(int id) {
+        return chambeaMapper.gettwo(id);
+
     }
     public Datos ObtenProductoPorId(int id) {
         return chambeaMapper.selectById(id);
     }
     public Resultados getBigResul(int id) {
         Datos datos = chambeaMapper.selectById(id);
-        List<DatosAlta> alta = chambeaMapper.getAllCaractForDatos(id);
+        List<DatosAlta> alta = chambeaMapper.gettwo( id);
         List<DatosTgc> tgc = chambeaMapper.getNumeroDeTarjeta(id);
         
         List<String> DatosAlta = alta.stream().map(p-> p.getDescripcionCorta()).collect(Collectors.toList());
@@ -34,7 +35,7 @@ public abstract class ChambeaServiceImpl implements ChambeaService{
         return new Resultados(datos, DatosAlta, DatosTgc);
     }
     public void guarda(Datos datos) {
-        int id = datos.getIdUsuario();
+        int id = datos.getId();
         Datos encontrado = this.ObtenUsuarioPorId(id);
         // si NO hay ningún renglón en la tabla "Persona",cuyo id sea
         // el parámetro que recibe el método 'ObtenUsuarioPorId'
@@ -48,4 +49,9 @@ public abstract class ChambeaServiceImpl implements ChambeaService{
     public void elimina(int id) {
         chambeaMapper.delete(id);
     }
+    @Override
+    public Datos ObtenUsuarioPorId(int id) {
+        return chambeaMapper.selectById(id);
+    }
+    
 }

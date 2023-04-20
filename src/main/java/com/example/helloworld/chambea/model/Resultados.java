@@ -2,8 +2,6 @@ package com.example.helloworld.chambea.model;
 
 import java.util.List;
 
-import com.example.helloworld.productos.model.ResultadoConsulta;
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
