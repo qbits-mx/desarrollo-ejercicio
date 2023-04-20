@@ -9,5 +9,5 @@ public class CaracteristicaProducto {
     private int id;
     private int idProducto;
     private String descripcion;
-    private boolean actuva;
+    private boolean actua;
 }
