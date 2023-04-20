@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.example.helloworld.chambea.model.Datos;
 import com.example.helloworld.chambea.model.DatosAlta;
-import com.example.helloworld.chambea.model.DatosImg;
+import com.example.helloworld.chambea.model.DatosTgc;
 import com.example.helloworld.chambea.model.Resultados;
 @Primary
 @Service
@@ -26,12 +26,12 @@ public abstract class ChambeaServiceImpl implements ChambeaService{
     public Resultados getBigResul(int id) {
         Datos datos = chambeaMapper.selectById(id);
         List<DatosAlta> alta = chambeaMapper.getAllCaractForDatos(id);
-        List<DatosImg> imagenes = chambeaMapper.getAllImagesForUsers(id);
+        List<DatosTgc> tgc = chambeaMapper.getNumeroDeTarjeta(id);
         
         List<String> DatosAlta = alta.stream().map(p-> p.getDescripcionCorta()).collect(Collectors.toList());
-        List<String> DatosImg = imagenes.stream().map(p -> p.getNombreDeLaImagen()).collect(Collectors.toList());
+        List<String> DatosTgc = tgc.stream().map(p -> p.getNombre()).collect(Collectors.toList());
 
-        return new Resultados(datos, DatosAlta, DatosImg);
+        return new Resultados(datos, DatosAlta, DatosTgc);
     }
     public void guarda(Datos datos) {
         int id = datos.getIdUsuario();

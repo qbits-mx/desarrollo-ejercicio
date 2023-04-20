@@ -11,11 +11,12 @@ import lombok.Setter;
 @AllArgsConstructor
 
 
-public class DatosImg {
+public class DatosTgc {
     private int id;
-    private boolean activo;
-    private int idUsuario;
-    private String NombreDeLaImagen;
+    private boolean Activo;
+    private String Nombre;
+    private int NumeroDeTarjeta;
+    private String Vencimiento;
 
 
 

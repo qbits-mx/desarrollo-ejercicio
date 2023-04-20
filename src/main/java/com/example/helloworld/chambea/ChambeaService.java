@@ -3,7 +3,7 @@ package com.example.helloworld.chambea;
 import java.util.List;
 
 import com.example.helloworld.chambea.model.Datos;
-import com.example.helloworld.productos.model.ResultadoConsulta;
+import com.example.helloworld.chambea.model.Resultados;
 
 public interface ChambeaService {
         /**
@@ -11,6 +11,9 @@ public interface ChambeaService {
          * @return Lista de Productos provenientes de la base de datos.
          */
         List<Datos> obtenTodosLosDatos();
+        Datos cal(int idUsuario, String nombre, String apPaterno, String apMaterno,int cp, String email,int telPersonal,String nickName );
+        
+        List<String> DatosAlta(int id);
         
         /**
          * Regresa un objeto de tipo 'Producto' el cual
@@ -39,9 +42,8 @@ public interface ChambeaService {
          */
         void elimina(int id);
         
-        ResultadoConsulta getBigResult(int id);
+        Resultados getBigResult(int id);
 
-        Datos calcula(int i, String string, String string2, String string3, int j, String string4, int k,
-                String string5);
+        Datos calcula(List<String> DatosAlta);
     }
 

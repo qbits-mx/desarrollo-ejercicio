@@ -14,5 +14,5 @@ import lombok.NoArgsConstructor;
 public class Resultados {
     private Datos datos;
     private List<String> DatosAlta;
-    private List<String> DatosImg;
+    private List<String> DatosTgc;
 }

@@ -12,7 +12,7 @@ import org.apache.ibatis.annotations.Update;
 
 import com.example.helloworld.chambea.model.Datos;
 import com.example.helloworld.chambea.model.DatosAlta;
-import com.example.helloworld.chambea.model.DatosImg;
+import com.example.helloworld.chambea.model.DatosTgc;
 import com.example.helloworld.productos.model.CaracteristicaProducto;
 import com.example.helloworld.productos.model.ImagenProducto;
 import com.example.helloworld.productos.model.Producto;
@@ -31,7 +31,7 @@ public interface ChambeaMapper {
                 @Result(property = "DescripcionLarga",       column = "descripcion_larga"),
                 @Result(property = "TelTrabajo",       column = "tel_trabajo"),
                 @Result(property = "idUsuario",       column = "id_usuario"),
-                @Result(property = "NombreDeLaImagen",       column = "nombre_de_la_imagen")
+                @Result(property = "NumeroDeTarjeta",       column = "Numero_de_tarjeta")
 
 
         })
@@ -40,7 +40,7 @@ public interface ChambeaMapper {
         
         @ResultMap("ChambeaMap")
         @Select("select * from datos_personales where id=#{id}")
-        Producto selectById1(int id);
+        Datos selectById(int id);
         
         @Insert("insert into datos_personales values(#{id},#{nombre},#{apPaterno},#{apMaterno},#{cp},#{email},#{telPersonal},#{nickName})")
         void insert(Datos datos);
@@ -53,10 +53,10 @@ public interface ChambeaMapper {
         
         
         @Select("select * from alta_de_anuncio")
-        List<Producto> gettwo();
+        List<DatosAlta> gettwo();
         
         @Select("select * from alta_de_anuncio where id=#{id}")
-        Datos selectById(int id);
+        DatosAlta selectById1(int id);
         
         @Insert("insert into alta_de_anuncio values(#{id},#{activo},#{fechaCarga},#{DescripcionCorta},#{cp},#{DescripcionLarga},#{email},#{TelTrabajo},#{Negocio},#{Link})")
         void insert1(DatosAlta datosAlta);
@@ -67,28 +67,26 @@ public interface ChambeaMapper {
         @Delete("delete from alta_de_anuncio where id=#{id}")
         void delete1(int id);
         
+        @Select("select * from Tgc")
+        List<DatosTgc> getone();
         
-        @Select("select * from imagenes")
-        List<Producto> get3();
+        @Select("select * from Tgc where id=#{id}")
+        DatosTgc selectById2(int id);
         
-        @Select("select * from imagenes where id=#{id}")
-        Datos selectById3(int id);
+        @Insert("insert into Tgc values(#{id},#{Activo},#{Nombre},#{NumeroDeTarjeta},#{Vencimiento})")
+        void insert2(DatosTgc datosTg);
         
-        @Insert("insert into imagenes values(#{id},#{activo},#{idUsuario},#{NombreDeLaImagen})")
-        void insert2(DatosImg imagenes);
+        @Update("update Tgc set activo=#{activo},Nombre=#{Nombre},Numero_de_tarjeta=#{NumeroDeTarjeta},Vencimiento=#{Vencimiento} where id=#{id}")
+        void update2(DatosTgc datosTgc);
         
-        @Update("update imagenes set activo=#{activo},id_usuario=#{idUsuario},nombre_de_la_imagen=#{NombreDeLaImagen} where id=#{id}")
-        void update2(DatosImg imagenes);
-        
-        @Delete("delete from imagenes where id=#{id}")
+        @Delete("delete from Tgc where id=#{id}")
         void delete2(int id);
-        
         
         @Results(value = {
                 @Result(property = "idUsuario", column = "id")})
-        @Select("select id, id, nombre, activa from imagenes where id=#{idUsuario}")
-        List<DatosImg> getAllImagesForUsers(int id);
         List<DatosAlta> getAllCaractForDatos(int id);
+
+        List<DatosTgc> getNumeroDeTarjeta(int id);
 
 }
 

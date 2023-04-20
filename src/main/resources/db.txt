@@ -77,14 +77,15 @@ CREATE TABLE alta_de_anuncio (
 
 
 
-CREATE TABLE imagenes (
+CREATE TABLE Tgc (
     id INT NOT NULL,
-    1d_usuario int,
-    nombre_de_la_imagen VARCHAR(2000),
-    activo boolean,
+    Activo Boolean,
+    Nombre VARCHAR(64),
+    Vencimiento int,
+    numero_de_tarjeta double,
     PRIMARY KEY(id)
 );
-INSERT INTO imagenes VALUES(1004,50,'/2023/04/13/M7tQJ3icTmgbJw6K.jpg', activo);
+INSERT INTO Tgc VALUES(50,true,/2023/04/13/,'Gustavo Rangel', 123456781234);
 
 
 

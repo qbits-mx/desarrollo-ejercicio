@@ -12,6 +12,7 @@ public interface ProductoService {
      */
     List<Producto> obtenTodosLosProductos();
     
+    
     /**
      * Regresa un objeto de tipo 'Producto' el cual
      * tiene por id, el argumento pasado a este método.
