@@ -28,7 +28,9 @@ public interface ChambeaMapper {
 
         })
         @Select("select * from datos_personales")
-        List<Datos> getAllOne();
+        List<Datos> getMen();
+    
+
         
         @ResultMap("ChambeaMap")
         @Select("select * from datos_personales where id=#{id}")
@@ -43,9 +45,20 @@ public interface ChambeaMapper {
         @Delete("delete from datos_personales where id=#{id}")
         void delete(int id);
         
-        @ResultMap("ChambeaMap")
-        @Select("select * from datos_personales")
+
+        @ResultMap("Holaya")
+        @Select("select * from alta_de_anuncio")
         List<DatosAlta> gettwo(int id);
+        
+        @Results(
+                id="Holaya", 
+                value = {
+                    @Result(property = "fechaCarga",        column = "fecha_de_carga"),
+                    @Result(property = "DescripcionCorta",      column = "Descripcion_corta"),
+                    @Result(property = "DescripcionLarga",       column = "Descripcion_larga"),
+                    @Result(property = "TelTrabajo",       column = "tel_trabajo")
+
+            })
         
         @Select("select * from alta_de_anuncio where id=#{id}")
         DatosAlta selectById1(int id);
@@ -53,7 +66,7 @@ public interface ChambeaMapper {
         @Insert("insert into alta_de_anuncio values(#{id},#{activo},#{fechaCarga},#{DescripcionCorta},#{cp},#{DescripcionLarga},#{TelTrabajo},#{Negocio},#{Link})")
         void insert1(DatosAlta datosAlta);
         
-        @Update("update alta_de_anuncio set activo=#{activo},fecha_carga=#{fechaCarga},descripcion_corta=#{DescripcionCorta},descripcion_larga=#{DescripcionLarga}, cp=#{cp},tel_trabajo=#{TelTrabajo},Negocio=#{Negocio},Link=#{Link} where id=#{id}")
+        @Update("update alta_de_anuncio set activo=#{activo},fecha_de_carga=#{fechaCarga},descripcion_corta=#{DescripcionCorta},descripcion_larga=#{DescripcionLarga}, cp=#{cp},tel_trabajo=#{TelTrabajo},Negocio=#{Negocio},Link=#{Link} where id=#{id}")
         void update1(DatosAlta datosAlta);
         
         @Delete("delete from alta_de_anuncio where id=#{id}")
@@ -82,8 +95,16 @@ public interface ChambeaMapper {
         
         @ResultMap("ChambeaMap")
         List<DatosTgc> getNumeroDeTarjeta(int id);
+        
         @ResultMap("ChambeaMap")
         List<DatosAlta> getobtenTodosLosDatos(int id);
+        
+        @ResultMap("ChambeaMap")
+        @Select("select * from datos_personales")
+        List<Datos> getFist(int id);
+        
+
+
 
 }
 

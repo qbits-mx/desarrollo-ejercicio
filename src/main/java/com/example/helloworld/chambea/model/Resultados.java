@@ -11,6 +11,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class Resultados {
     private Datos datos;
+    private DatosAlta datosAlta;
+    private List<String> Datos;
     private List<String> DatosAlta;
     private List<String> DatosTgc;
 }

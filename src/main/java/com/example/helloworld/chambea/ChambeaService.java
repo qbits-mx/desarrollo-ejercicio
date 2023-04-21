@@ -24,7 +24,9 @@ public interface ChambeaService {
          * @return Producto asociado al id proporcionado
          */
         Datos ObtenUsuarioPorId(int id);
-        
+        Datos selectById(int id);
+        DatosAlta selectById1(int id);
+
         /**
          * Busca el producto dado y si no está en la base de datos, 
          * lo inserta, pero si está en la base, lo actualiza.
@@ -42,6 +44,8 @@ public interface ChambeaService {
         void elimina(int id);
 
         List<DatosTgc> getone();
+
+        List<Datos> getFist(int id);
 
     }
 
