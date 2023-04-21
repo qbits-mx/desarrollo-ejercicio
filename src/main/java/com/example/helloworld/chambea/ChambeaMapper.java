@@ -21,12 +21,8 @@ public interface ChambeaMapper {
     @Results(
             id="ChambeaMap", 
             value = {
-                @Result(property = "id",         column = "id"),
-                @Result(property = "nombre",       column = "fecha_de_carga"),
                 @Result(property = "apPaterno",        column = "ap_paterno"),
                 @Result(property = "apMaterno",      column = "ap_materno"),
-                @Result(property = "cp",       column = "cp"),
-                @Result(property = "email",       column = "email"),
                 @Result(property = "telPersonal",       column = "tel_personal"),
                 @Result(property = "nickName",       column = "nick_name")
 
@@ -48,7 +44,7 @@ public interface ChambeaMapper {
         void delete(int id);
         
         @ResultMap("ChambeaMap")
-        @Select("select * from alta_de_anuncio")
+        @Select("select * from datos_personales")
         List<DatosAlta> gettwo(int id);
         
         @Select("select * from alta_de_anuncio where id=#{id}")
@@ -63,7 +59,11 @@ public interface ChambeaMapper {
         @Delete("delete from alta_de_anuncio where id=#{id}")
         void delete1(int id);
         
-        @ResultMap("ChambeaMap")
+        @Results(
+                id="ChambeaOne", 
+                value = {
+                    @Result(property = "NumeroDeTarjeta",        column = "numero_de_tarjeta"),
+            }) 
         @Select("select * from Tgc")
         List<DatosTgc> getone();
         

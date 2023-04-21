@@ -41,5 +41,7 @@ public interface ChambeaService {
          */
         void elimina(int id);
 
+        List<DatosTgc> getone();
+
     }
 

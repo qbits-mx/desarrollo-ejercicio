@@ -15,7 +15,7 @@ public class DatosTgc {
     private int id;
     private boolean Activo;
     private String Nombre;
-    private int NumeroDeTarjeta;
+    private long NumeroDeTarjeta;
     private String Vencimiento;
 
 

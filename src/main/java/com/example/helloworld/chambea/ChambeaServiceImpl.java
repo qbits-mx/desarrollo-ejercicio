@@ -53,5 +53,10 @@ public  class ChambeaServiceImpl implements ChambeaService{
     public Datos ObtenUsuarioPorId(int id) {
         return chambeaMapper.selectById(id);
     }
+    @Override
+    public List<DatosTgc> getone() {
+
+        return chambeaMapper.getone();
+    }
     
 }
