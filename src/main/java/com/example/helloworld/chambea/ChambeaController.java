@@ -57,9 +57,8 @@ public class  ChambeaController {
     @GetMapping(
             value= "/all-anuncio", 
             produces = "application/json; charset=utf-8")
-    public   List<DatosAlta> gettwo(
-            @RequestHeader int id) {
-        return chambeaService.gettwo( id); 
+    public   List<DatosAlta> gettwo() {
+        return chambeaService.gettwo(); 
     }
     @GetMapping(
             value= "/all-Tarjeta", 
@@ -70,16 +69,20 @@ public class  ChambeaController {
     @GetMapping(
             value= "/all-datos", 
             produces = "application/json; charset=utf-8")
-    public   List<Datos> getFist(int id) {
-        return chambeaService.getFist( id); 
+    public   List<Datos> getFist() {
+        return chambeaService.getFist(); 
     } 
     @GetMapping(value = "/datos-personal", produces = "application/json; charset=utf-8")
     public Datos idpesonal(@RequestParam int id) {
         return chambeaService.selectById(id);
     }
-    @GetMapping(value = "/dato-usuario-unico", produces = "application/json; charset=utf-8")
+    @GetMapping(value = "/dato-anuncio", produces = "application/json; charset=utf-8")
     public DatosAlta idpesonal1(@RequestParam int id) {
         return chambeaService.selectById1(id);
+    }
+    @GetMapping(value = "/tgc", produces = "application/json; charset=utf-8")
+    public DatosTgc idpesonal2(@RequestParam int id) {
+        return chambeaService.selectById2(id);
     }
     
 

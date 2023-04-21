@@ -48,7 +48,7 @@ public interface ChambeaMapper {
 
         @ResultMap("Holaya")
         @Select("select * from alta_de_anuncio")
-        List<DatosAlta> gettwo(int id);
+        List<DatosAlta> gettwo();
         
         @Results(
                 id="Holaya", 
@@ -72,15 +72,18 @@ public interface ChambeaMapper {
         @Delete("delete from alta_de_anuncio where id=#{id}")
         void delete1(int id);
         
+
+        
+        @ResultMap("ChambeaOne")
+        @Select("select * from Tgc")
+        List<DatosTgc> getone();
+        
         @Results(
                 id="ChambeaOne", 
                 value = {
                     @Result(property = "NumeroDeTarjeta",        column = "numero_de_tarjeta"),
             }) 
-        @Select("select * from Tgc")
-        List<DatosTgc> getone();
         
-        @ResultMap("ChambeaMap")
         @Select("select * from Tgc where id=#{id}")
         DatosTgc selectById2(int id);
         
@@ -93,6 +96,7 @@ public interface ChambeaMapper {
         @Delete("delete from Tgc where id=#{id}")
         void delete2(int id);
         
+        
         @ResultMap("ChambeaMap")
         List<DatosTgc> getNumeroDeTarjeta(int id);
         
@@ -101,7 +105,7 @@ public interface ChambeaMapper {
         
         @ResultMap("ChambeaMap")
         @Select("select * from datos_personales")
-        List<Datos> getFist(int id);
+        List<Datos> getFist();
         
 
 

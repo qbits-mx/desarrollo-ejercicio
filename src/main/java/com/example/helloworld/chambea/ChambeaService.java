@@ -12,20 +12,13 @@ public interface ChambeaService {
          * @param id 
          * @return Lista de Productos provenientes de la base de datos.
          */
-        List<DatosAlta> gettwo(int id);
-        
-        /**
-         * Regresa un objeto de tipo 'Producto' el cual
-         * tiene por id, el argumento pasado a este método.
-         * Si no existe ningún producto con ese id, este método
-         * regresa un producto nulo (null)
-         * 
-         * @param id Llave del producto a ser buscado
-         * @return Producto asociado al id proporcionado
-         */
+        List<DatosAlta> gettwo();
+
         Datos ObtenUsuarioPorId(int id);
         Datos selectById(int id);
         DatosAlta selectById1(int id);
+        DatosTgc selectById2(int id);
+
 
         /**
          * Busca el producto dado y si no está en la base de datos, 
@@ -45,7 +38,7 @@ public interface ChambeaService {
 
         List<DatosTgc> getone();
 
-        List<Datos> getFist(int id);
+        List<Datos> getFist();
 
     }
 

@@ -17,8 +17,8 @@ public  class ChambeaServiceImpl implements ChambeaService{
     public ChambeaServiceImpl(ChambeaMapper chambeaMapper) {
         this.chambeaMapper = chambeaMapper;
     }
-    public List<DatosAlta> gettwo(int id) {
-        return chambeaMapper.gettwo(id);
+    public List<DatosAlta> gettwo() {
+        return chambeaMapper.gettwo();
 
     }
     public Datos ObtenProductoPorId(int id) {
@@ -27,16 +27,17 @@ public  class ChambeaServiceImpl implements ChambeaService{
     public Resultados getBigResul(int id) {
         Datos datos = chambeaMapper.selectById(id);
         DatosAlta datosAlta = chambeaMapper.selectById1(id);
-        List<DatosAlta> alta = chambeaMapper.gettwo( id);
+        DatosTgc datosTgc = chambeaMapper.selectById2(id);
+        List<DatosAlta> alta = chambeaMapper.gettwo();
         List<DatosTgc> tgc = chambeaMapper.getNumeroDeTarjeta(id);
-        List<Datos> data = chambeaMapper.getFist(id);
+        List<Datos> data = chambeaMapper.getFist();
         
         List<String> DatosAlta = alta.stream().map(p-> p.getDescripcionCorta()).collect(Collectors.toList());
         List<String> DatosTgc = tgc.stream().map(p -> p.getNombre()).collect(Collectors.toList());
         List<String> Datos = data.stream().map(p -> p.getNombre()).collect(Collectors.toList());
 
 
-        return new Resultados(datos, datosAlta, DatosAlta, DatosTgc,Datos);
+        return new Resultados(datos, datosAlta,datosTgc, DatosAlta, DatosTgc,Datos);
     }
     public void guarda(Datos datos) {
         int id = datos.getId();
@@ -63,8 +64,8 @@ public  class ChambeaServiceImpl implements ChambeaService{
         return chambeaMapper.getone();
     }
     @Override
-    public List<Datos> getFist(int id) {
-        return chambeaMapper.getFist(id);
+    public List<Datos> getFist() {
+        return chambeaMapper.getFist();
     }
     @Override
     public Datos selectById(int id) {
@@ -73,6 +74,10 @@ public  class ChambeaServiceImpl implements ChambeaService{
     @Override
     public DatosAlta selectById1(int id) {
         return chambeaMapper.selectById1(id);
+    }
+    @Override
+    public DatosTgc selectById2(int id) {
+       return chambeaMapper.selectById2(id);
     }
 
 }
