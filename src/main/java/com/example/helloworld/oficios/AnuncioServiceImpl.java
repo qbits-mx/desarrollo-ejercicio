@@ -10,39 +10,30 @@ import com.example.helloworld.oficios.model.Anuncio;
 @Primary
 @Service
 public class AnuncioServiceImpl implements AnuncioService {
-private AnuncioMapper anuncioMapper;
+    private AnuncioMapper anuncioMapper;
 
-public AnuncioServiceImpl(AnuncioMapper anuncioMapper) {
-this.anuncioMapper = anuncioMapper;
-
-}
-
-@Override
-public List<Anuncio> getAll() {
-return anuncioMapper.getAll();
-}
-
-@Override
-public Anuncio selectById(int id) {
-  return anuncioMapper.selectById(id);
-}
-
-@Override
-public void guarda(Anuncio anuncio) {
-  int id = anuncio.getId();
-  Anuncio encontrado = this.selectById(id);
-
-  if (encontrado == null) {
-    anuncioMapper.insert(anuncio);
-  } else {
-    anuncioMapper.update(anuncio);
-  }
-}
-
-@Override
-public void elimina(int id) {
-  anuncioMapper.delete(id);
-}
-
-
+    public AnuncioServiceImpl(AnuncioMapper anuncioMapper) {
+        this.anuncioMapper = anuncioMapper;
+    }
+    public List<Anuncio> obtenTodosLosAnuncios() {
+        return anuncioMapper.getAll();
+    }
+    public Anuncio obtenAnuncioPorId(int id) {
+        return anuncioMapper.selectById(id);
+    }
+    public Anuncio obtenAnuncioPorIdAnunciante(int id) {
+        return anuncioMapper.selectByIdAnunciante(id);
+    }
+    public void guarda(Anuncio anuncio) {
+        int id = anuncio.getId();
+        Anuncio encontrado = this.obtenAnuncioPorId(id);
+        if (encontrado == null) {
+            anuncioMapper.insert(anuncio);
+        } else {
+            anuncioMapper.update(anuncio);
+        }
+    }
+    public void elimina(int id) {
+        anuncioMapper.delete(id);
+    }
 }

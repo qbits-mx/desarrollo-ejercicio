@@ -10,7 +10,7 @@ public interface AnuncioService {
      * 
      * @return Lista de Anuncios provenientes de la base de datos.
      */
-    List<Anuncio> getAll();
+    List<Anuncio> obtenTodosLosAnuncios();
 
     /**
      * Regresa un objeto de tipo 'Anuncio' el cual tiene por id, el argumento pasado
@@ -20,7 +20,10 @@ public interface AnuncioService {
      * @param id Llave del anuncio a ser buscado
      * @return Anuncio asociado al id proporcionado
      */
-    Anuncio selectById(int id);
+    Anuncio obtenAnuncioPorId(int id);
+    
+    
+    Anuncio obtenAnuncioPorIdAnunciante(int id);
 
     /**
      * Busca el anuncio dado y si no está en la base de datos, lo inserta, pero si

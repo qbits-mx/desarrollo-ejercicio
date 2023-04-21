@@ -29,6 +29,10 @@ public interface AnuncioMapper {
     @Select("select * from anuncio where id=#{id}")
     Anuncio selectById(int id);
     
+    @ResultMap("ChambaMap")
+    @Select("select * from anuncio where id_anunciante=#{idAnunciante}")
+    Anuncio selectByIdAnunciante(int id);
+    
     @Insert("insert into anuncio values(#{id}, #{idAnunciante}, #{titulo}, #{anuncio}, #{codigoPostal}, #{oficio}, #{email}, #{telefono})")
     void insert(Anuncio anuncio);
     

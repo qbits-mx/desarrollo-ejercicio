@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -34,7 +35,7 @@ public class RegistroController {
       return registroService.selectById(id);
     }
     @PostMapping(value = "/jc/registro-anuncio", produces = "application/json; charset=utf-8")
-    public void carga(RegistroAnunciante registroAnunciante) {
+    public void carga(@RequestBody RegistroAnunciante registroAnunciante) {
       registroService.guarda(registroAnunciante);
     }
 }
