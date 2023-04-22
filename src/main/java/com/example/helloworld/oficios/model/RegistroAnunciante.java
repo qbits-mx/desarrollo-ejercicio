@@ -9,12 +9,10 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class RegistroAnunciante {
     private int id;
-    private int idAnunciante;
     private String nombre;
     private String apellidoPaterno;
     private String apellidoMaterno;
     private String telefonoPersonal;
-    private String emailPersonal;
     private String fechaNacimiento;
     private String oficio;
     private String telefonoNegocio;

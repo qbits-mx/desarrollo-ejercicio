@@ -28,14 +28,14 @@ public RegistroAnunciante selectById(int id) {
 }
 
 @Override
-public void guarda(RegistroAnunciante registroanunciante) {
-  int id = registroanunciante.getId();
+public void guarda(RegistroAnunciante registroAnunciante) {
+  int id = registroAnunciante.getId();
   RegistroAnunciante encontrado = this.selectById(id);
 
   if (encontrado == null) {
-      registroMapper.insert(registroanunciante);
+      registroMapper.insert(registroAnunciante);
   } else {
-      registroMapper.update(registroanunciante);
+      registroMapper.update(registroAnunciante);
   }
 }
 

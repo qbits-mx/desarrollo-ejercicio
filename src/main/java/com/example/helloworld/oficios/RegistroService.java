@@ -29,7 +29,7 @@ public interface RegistroService {
    * 
    * @param Anuncio a ser insertado o actualizado
    */
-  void guarda(RegistroAnunciante datoAnunciante);
+  void guarda(RegistroAnunciante registroAnunciante);
   
   /**
    * Elimina el anuncio cuyo id es el dado.

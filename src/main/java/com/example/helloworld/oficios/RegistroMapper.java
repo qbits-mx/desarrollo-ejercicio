@@ -19,11 +19,9 @@ public interface RegistroMapper {
     @Results(
         id="RegisterMap", 
         value = {
-            @Result(property = "idAnunciante",        column = "id_anunciante"),
             @Result(property = "apellidoPaterno",        column = "apellido_paterno"),
             @Result(property = "apellidoMaterno",        column = "apellido_materno"),
             @Result(property = "telefonoPersonal",        column = "telefono_personal"),
-            @Result(property = "emailPersonal",        column = "email_personal"),
             @Result(property = "fechaNacimiento",        column = "fecha_nacimiento"),
             @Result(property = "telefonoNegocio",        column = "telefono_negocio"),
             @Result(property = "codigoPostalNegocio",        column = "codigo_postal_negocio")           
@@ -35,11 +33,11 @@ public interface RegistroMapper {
     @Select("select * from registro_anunciante where id=#{id}")
     RegistroAnunciante selectById(int id);
     
-    @Insert("insert into registro_anunciante values(#{id}, #{idAnunciante}, #{nombre}, #{apellidoPaterno}, #{apellidoMaterno}, #{telefonoPersonal}, #{emailPersonal}, #{fechaNacimiento}, #{oficio}, #{telefonoNegocio}, #{codigoPostalNegocio})")
-    void insert(RegistroAnunciante registroMapper);
+    @Insert("insert into registro_anunciante values(#{id}, #{nombre}, #{apellidoPaterno}, #{apellidoMaterno}, #{telefonoPersonal}, #{fechaNacimiento}, #{oficio}, #{telefonoNegocio}, #{codigoPostalNegocio})")
+    void insert(RegistroAnunciante rm);
     
-    @Update("update registro_anunciante set id_anunciante=#{idAnunciante}, nombre=#{nombre}, apellido_paterno=#{apellidoPaterno}, apellido_materno=#{apellidoMaterno}, telefono_personal=#{telefonoPersonal}, email_personal=#{emailPersonal}, fecha_nacimiento=#{fechaNacimiento}, oficio=#{oficio}, telefono_negocio=#{telefonoNegocio}, codigo_postal_negocio=#{codigoPostalNegocio}, where id=#{id} ")
-    void update(RegistroAnunciante registroMapper);
+    @Update("update registro_anunciante set nombre=#{nombre}, apellido_paterno=#{apellidoPaterno}, apellido_materno=#{apellidoMaterno}, telefono_personal=#{telefonoPersonal}, fecha_nacimiento=#{fechaNacimiento}, oficio=#{oficio}, telefono_negocio=#{telefonoNegocio}, codigo_postal_negocio=#{codigoPostalNegocio} where id=#{id}")
+    void update(RegistroAnunciante rm);
 
     @Delete("delete from registro_anunciante where id=#{id}")
     void delete(int id);
