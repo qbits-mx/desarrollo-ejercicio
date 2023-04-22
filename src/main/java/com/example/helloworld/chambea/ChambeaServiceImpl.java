@@ -63,9 +63,6 @@ public  class ChambeaServiceImpl implements ChambeaService{
             chambeaMapper.update2(datosTgc);
         }
     }
-    public void elimina(int id) {
-        chambeaMapper.delete(id);
-    }
     @Override
     public Datos ObtenUsuarioPorId(int id) {
         return chambeaMapper.selectById(id);
@@ -117,6 +114,7 @@ public  class ChambeaServiceImpl implements ChambeaService{
           chambeaMapper.update(datos);
         }        
     }
+
     @Override
     public void guarda2(DatosTgc datosTgc) {
         int id = datosTgc.getId();
@@ -128,4 +126,17 @@ public  class ChambeaServiceImpl implements ChambeaService{
           chambeaMapper.update2(datosTgc);
         }        
     }        
+    //eliminar datos anuncio
+    @Override
+    public void elimina(int id) {
+        chambeaMapper.delete1(id);
+    }
+    //eliminar datos 
+    public void elimina1(int id) {
+        chambeaMapper.delete(id);
+    }   
+    //tgc
+    public void elimina2(int id) {
+        chambeaMapper.delete2(id);
+    }
     }

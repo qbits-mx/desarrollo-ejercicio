@@ -96,6 +96,17 @@ public class  ChambeaController {
     public void carga2(@RequestBody DatosTgc datosTgc) {
         chambeaService.guarda2(datosTgc);
     }
+    @DeleteMapping(value = "/delete-anuncio", produces = "application/json; charset=utf-8")
+    public void deleteAnuncio(int id) {
+        chambeaService.elimina(id);
+    }
+    @DeleteMapping(value = "/delete-usuario", produces = "application/json; charset=utf-8")
+    public void deleteUsuario(int id) {
+        chambeaService.elimina1(id);
+    }    @DeleteMapping(value = "/delete-tgc", produces = "application/json; charset=utf-8")
+    public void deleteTgc(int id) {
+        chambeaService.elimina2(id);
+    }
        
 
 }

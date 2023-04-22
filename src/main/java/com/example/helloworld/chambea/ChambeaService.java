@@ -34,6 +34,8 @@ public interface ChambeaService {
          * @param id Entero asociado a un posible producto.
          */
         void elimina(int id);
+        void elimina1(int id);
+        void elimina2(int id);
 
         List<DatosTgc> getone();
 
