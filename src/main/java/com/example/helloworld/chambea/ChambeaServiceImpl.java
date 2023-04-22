@@ -34,7 +34,7 @@ public  class ChambeaServiceImpl implements ChambeaService{
         
         List<String> DatosAlta = alta.stream().map(p-> p.getDescripcionCorta()).collect(Collectors.toList());
         List<String> DatosTgc = tgc.stream().map(p -> p.getNombre()).collect(Collectors.toList());
-        List<String> Datos = data.stream().map(p -> p.getNombre()).collect(Collectors.toList());
+        List<String> Datos = data.stream().map(p -> p.getApPaterno()).collect(Collectors.toList());
 
 
         return new Resultados(datos, datosAlta,datosTgc, DatosAlta, DatosTgc,Datos);
@@ -49,6 +49,18 @@ public  class ChambeaServiceImpl implements ChambeaService{
             chambeaMapper.insert(datos);
         } else {
             chambeaMapper.update(datos);
+        }
+    }
+    public void guarda(DatosTgc datosTgc) {
+        int id = datosTgc.getId();
+        Datos encontrado = this.ObtenUsuarioPorId(id);
+        // si NO hay ningún renglón en la tabla "Persona",cuyo id sea
+        // el parámetro que recibe el método 'ObtenUsuarioPorId'
+        // entonces la variable "encontrado" será ingual a: null
+        if(encontrado==null) {
+            chambeaMapper.insert2(datosTgc);
+        } else {
+            chambeaMapper.update2(datosTgc);
         }
     }
     public void elimina(int id) {
@@ -79,5 +91,41 @@ public  class ChambeaServiceImpl implements ChambeaService{
     public DatosTgc selectById2(int id) {
        return chambeaMapper.selectById2(id);
     }
+    @Override
+    public DatosAlta selectById0(int id) {
+      return chambeaMapper.selectById0(id);
+    }
+    @Override
+    public void guarda(DatosAlta datosAlta) {
+      int id = datosAlta.getId();
+      DatosAlta encontrado = this.selectById1(id);
 
-}
+      if (encontrado == null) {
+        chambeaMapper.insert1(datosAlta);
+      } else {
+        chambeaMapper.update1(datosAlta);
+      }
+    }
+    @Override
+    public void guarda1(Datos datos) {
+        int id = datos.getId();
+        Datos encontrado = this.selectById(id);
+
+        if (encontrado == null) {
+          chambeaMapper.insert(datos);
+        } else {
+          chambeaMapper.update(datos);
+        }        
+    }
+    @Override
+    public void guarda2(DatosTgc datosTgc) {
+        int id = datosTgc.getId();
+        DatosTgc encontrado = this.selectById2(id);
+
+        if (encontrado == null) {
+          chambeaMapper.insert2(datosTgc);
+        } else {
+          chambeaMapper.update2(datosTgc);
+        }        
+    }        
+    }

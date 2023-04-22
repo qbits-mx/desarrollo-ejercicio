@@ -56,17 +56,20 @@ public interface ChambeaMapper {
                     @Result(property = "fechaCarga",        column = "fecha_de_carga"),
                     @Result(property = "DescripcionCorta",      column = "Descripcion_corta"),
                     @Result(property = "DescripcionLarga",       column = "Descripcion_larga"),
-                    @Result(property = "TelTrabajo",       column = "tel_trabajo")
+                    @Result(property = "TelTrabajo",       column = "tel_trabajo"),
+                    @Result(property = "Link",       column = "link")
 
             })
         
         @Select("select * from alta_de_anuncio where id=#{id}")
         DatosAlta selectById1(int id);
         
-        @Insert("insert into alta_de_anuncio values(#{id},#{activo},#{fechaCarga},#{DescripcionCorta},#{cp},#{DescripcionLarga},#{TelTrabajo},#{Negocio},#{Link})")
+        @ResultMap("Holaya")
+        @Insert("insert into alta_de_anuncio values(#{id},#{DescripcionCorta},#{DescripcionLarga},#{fechaCarga},#{cp},#{TelTrabajo},#{Negocio},#{Link},#{activo})")
         void insert1(DatosAlta datosAlta);
         
-        @Update("update alta_de_anuncio set activo=#{activo},fecha_de_carga=#{fechaCarga},descripcion_corta=#{DescripcionCorta},descripcion_larga=#{DescripcionLarga}, cp=#{cp},tel_trabajo=#{TelTrabajo},Negocio=#{Negocio},Link=#{Link} where id=#{id}")
+        @ResultMap("Holaya")
+        @Update("update alta_de_anuncio set descripcion_corta=#{DescripcionCorta},descripcion_larga=#{DescripcionLarga},fecha_de_carga=#{fechaCarga}, cp=#{cp},tel_trabajo=#{TelTrabajo},Negocio=#{Negocio},Link=#{Link},activo=#{activo} where id=#{id}")
         void update1(DatosAlta datosAlta);
         
         @Delete("delete from alta_de_anuncio where id=#{id}")
@@ -87,10 +90,10 @@ public interface ChambeaMapper {
         @Select("select * from Tgc where id=#{id}")
         DatosTgc selectById2(int id);
         
-        @Insert("insert into Tgc values(#{id},#{Activo},#{Nombre},#{NumeroDeTarjeta},#{Vencimiento})")
+        @Insert("insert into Tgc values(#{id},#{Activo},#{Nombre},#{Vencimiento},#{NumeroDeTarjeta})")
         void insert2(DatosTgc datosTg);
         
-        @Update("update Tgc set activo=#{activo},Nombre=#{Nombre},Numero_de_tarjeta=#{NumeroDeTarjeta},Vencimiento=#{Vencimiento} where id=#{id}")
+        @Update("update Tgc set activo=#{activo},Nombre=#{Nombre},Vencimiento=#{Vencimiento},Numero_de_tarjeta=#{NumeroDeTarjeta} where id=#{id}")
         void update2(DatosTgc datosTgc);
         
         @Delete("delete from Tgc where id=#{id}")
@@ -107,8 +110,9 @@ public interface ChambeaMapper {
         @Select("select * from datos_personales")
         List<Datos> getFist();
         
-
-
+        @ResultMap("Holaya")
+        @Select("select * from alta_de_anuncio where id=#{id}")
+        DatosAlta selectById0(int id);
 
 }
 

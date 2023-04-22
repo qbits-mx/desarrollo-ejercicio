@@ -84,8 +84,18 @@ public class  ChambeaController {
     public DatosTgc idpesonal2(@RequestParam int id) {
         return chambeaService.selectById2(id);
     }
-    
-
+    @PostMapping(value = "/agrega-anuncio", produces = "application/json; charset=utf-8")
+    public void carga(@RequestBody DatosAlta datosAlta) {
+        chambeaService.guarda(datosAlta);
+    }
+    @PostMapping(value = "/agrega-datos", produces = "application/json; charset=utf-8")
+    public void carga1(@RequestBody Datos datos) {
+        chambeaService.guarda1(datos);
+        
+    }    @PostMapping(value = "/agrega-tgc", produces = "application/json; charset=utf-8")
+    public void carga2(@RequestBody DatosTgc datosTgc) {
+        chambeaService.guarda2(datosTgc);
+    }
        
 
 }

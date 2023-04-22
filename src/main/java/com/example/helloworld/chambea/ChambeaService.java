@@ -26,8 +26,7 @@ public interface ChambeaService {
          * 
          * @param producto Producto a ser insertado o actualizado
          */
-        void guarda(Datos datos);
-        
+
         /**
          * Elimina el producto cuyo id es el dado.
          * Si no existe ningún producto con ese di, no hace nada.
@@ -39,6 +38,11 @@ public interface ChambeaService {
         List<DatosTgc> getone();
 
         List<Datos> getFist();
+        
+        DatosAlta selectById0(int id);
+        void guarda(DatosAlta datosAlta);
+        void guarda1(Datos datos);
+        void guarda2(DatosTgc datosTgc);
 
     }
 
