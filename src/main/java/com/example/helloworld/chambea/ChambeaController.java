@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.helloworld.chambea.model.Datos;
 import com.example.helloworld.chambea.model.DatosAlta;
 import com.example.helloworld.chambea.model.DatosTgc;
+import com.example.helloworld.chambea.model.Oficio;
 import com.example.helloworld.chambea.model.Resultados;
 import com.example.helloworld.muebles.Mueble;
 import com.example.helloworld.productos.InvokeRemoteRestService;
@@ -65,6 +66,12 @@ public class  ChambeaController {
             produces = "application/json; charset=utf-8")
     public   List<DatosTgc> getone() {
         return chambeaService.getone(); 
+    }
+    @GetMapping(
+            value= "/oficios", 
+            produces = "application/json; charset=utf-8")
+    public   Oficio getoficial(int id) {
+        return chambeaService.getofice(id); 
     }
     @GetMapping(
             value= "/all-datos", 

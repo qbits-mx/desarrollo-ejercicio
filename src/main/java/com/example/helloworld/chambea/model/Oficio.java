@@ -7,11 +7,9 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Resultados {
-    private Datos datos;
-    private DatosAlta datosAlta;
-    private DatosTgc datosTgc;
-    private Oficio oficio;
 
-    
+public class Oficio {
+    private int id;
+    private String oficios;
+    private boolean Activo;
 }

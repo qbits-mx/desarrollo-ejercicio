@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.example.helloworld.chambea.model.Datos;
 import com.example.helloworld.chambea.model.DatosTgc;
+import com.example.helloworld.chambea.model.Oficio;
 import com.example.helloworld.chambea.model.Resultados;
 import com.example.helloworld.chambea.model.DatosAlta;
 public interface ChambeaService {
@@ -45,6 +46,8 @@ public interface ChambeaService {
         void guarda(DatosAlta datosAlta);
         void guarda1(Datos datos);
         void guarda2(DatosTgc datosTgc);
+
+        Oficio getofice(int id);
 
     }
 

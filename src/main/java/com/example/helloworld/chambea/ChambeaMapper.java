@@ -14,6 +14,7 @@ import org.springframework.stereotype.Repository;
 import com.example.helloworld.chambea.model.Datos;
 import com.example.helloworld.chambea.model.DatosAlta;
 import com.example.helloworld.chambea.model.DatosTgc;
+import com.example.helloworld.chambea.model.Oficio;
 
 
 @Repository
@@ -23,23 +24,22 @@ public interface ChambeaMapper {
             value = {
                 @Result(property = "apPaterno",        column = "ap_paterno"),
                 @Result(property = "apMaterno",      column = "ap_materno"),
-                @Result(property = "telPersonal",       column = "tel_personal"),
-                @Result(property = "nickName",       column = "nick_name")
-
+                @Result(property = "telPersonal",       column = "tel_personal")
         })
         @Select("select * from datos_personales")
         List<Datos> getMen();
     
-
         
         @ResultMap("ChambeaMap")
         @Select("select * from datos_personales where id=#{id}")
         Datos selectById(int id);
         
-        @Insert("insert into datos_personales values(#{id},#{nombre},#{apPaterno},#{apMaterno},#{cp},#{email},#{telPersonal},#{nickName})")
+        @ResultMap("ChambeaMap")
+        @Insert("insert into datos_personales values(#{id},#{nombre},#{apPaterno},#{apMaterno},#{cp},#{telPersonal},#{date})")
         void insert(Datos datos);
         
-        @Update("update datos_personales set nombre=#{nombre},ap_paterno}=#{apPaterno},ap_materno=#{apMaterno},cp=#{cp},email=#{email},tel_personal=#{telPersonal},nick_name=#{nickName} where id=#{id}")
+        @ResultMap("ChambeaMap")
+        @Update("update datos_personales set nombre=#{nombre},ap_paterno=#{apPaterno},ap_materno=#{apMaterno},cp=#{cp},tel_personal=#{telPersonal},date=#{date} where id=#{id}")
         void update(Datos datos);
         
         @Delete("delete from datos_personales where id=#{id}")
@@ -113,6 +113,10 @@ public interface ChambeaMapper {
         @ResultMap("Holaya")
         @Select("select * from alta_de_anuncio where id=#{id}")
         DatosAlta selectById0(int id);
+
+
+        @Select("select * from oficios where id=#{id}")
+        Oficio getofice(int id);
 
 }
 

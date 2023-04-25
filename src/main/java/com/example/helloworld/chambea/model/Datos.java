@@ -9,8 +9,7 @@ public class Datos {
     private String nombre;
     private String apPaterno;
     private String apMaterno;
-    private long cp;
-    private String email;
+    private String cp;
     private long telPersonal;
-    private String nickName;
+    private String date;
 }

@@ -12,8 +12,8 @@ public class DatosAlta {
     private int id;
     private String DescripcionCorta;
     private String DescripcionLarga;
-    private long fechaCarga;
-    private long cp;
+    private String fechaCarga;
+    private String cp;
     private long TelTrabajo;
     private String Negocio;
     private String Link;
