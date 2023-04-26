@@ -23,8 +23,7 @@ public interface RegistroMapper {
             @Result(property = "apellidoMaterno",        column = "apellido_materno"),
             @Result(property = "telefonoPersonal",        column = "telefono_personal"),
             @Result(property = "fechaNacimiento",        column = "fecha_nacimiento"),
-            @Result(property = "telefonoNegocio",        column = "telefono_negocio"),
-            @Result(property = "codigoPostalNegocio",        column = "codigo_postal_negocio")           
+            @Result(property = "codigoPostal",        column = "codigo_postal")           
     })
     @Select("select * from registro_anunciante")
     List<RegistroAnunciante> getAll();
@@ -33,10 +32,10 @@ public interface RegistroMapper {
     @Select("select * from registro_anunciante where id=#{id}")
     RegistroAnunciante selectById(int id);
     
-    @Insert("insert into registro_anunciante values(#{id}, #{nombre}, #{apellidoPaterno}, #{apellidoMaterno}, #{telefonoPersonal}, #{fechaNacimiento}, #{oficio}, #{telefonoNegocio}, #{codigoPostalNegocio})")
+    @Insert("insert into registro_anunciante values(#{id}, #{nombre}, #{apellidoPaterno}, #{apellidoMaterno}, #{telefonoPersonal}, #{fechaNacimiento}, #{oficio}, #{codigoPostal})")
     void insert(RegistroAnunciante rm);
     
-    @Update("update registro_anunciante set nombre=#{nombre}, apellido_paterno=#{apellidoPaterno}, apellido_materno=#{apellidoMaterno}, telefono_personal=#{telefonoPersonal}, fecha_nacimiento=#{fechaNacimiento}, oficio=#{oficio}, telefono_negocio=#{telefonoNegocio}, codigo_postal_negocio=#{codigoPostalNegocio} where id=#{id}")
+    @Update("update registro_anunciante set nombre=#{nombre}, apellido_paterno=#{apellidoPaterno}, apellido_materno=#{apellidoMaterno}, telefono_personal=#{telefonoPersonal}, fecha_nacimiento=#{fechaNacimiento}, oficio=#{oficio}, codigo_postal=#{codigoPostal} where id=#{id}")
     void update(RegistroAnunciante rm);
 
     @Delete("delete from registro_anunciante where id=#{id}")

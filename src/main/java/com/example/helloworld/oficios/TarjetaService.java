@@ -28,7 +28,7 @@ public interface TarjetaService {
      * 
      * @param Tarjeta a ser insertado o actualizado
      */
-    void guarda(Tarjeta tarjeta);
+    void guarda(Tarjeta p);
 
     /**
      * Elimina la tarjeta cuyo id es el dado. Si no existe ninguna tarjeta con ese

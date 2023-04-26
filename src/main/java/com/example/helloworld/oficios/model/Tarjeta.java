@@ -9,7 +9,6 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class Tarjeta {
     private int id;
-    private int idAnunciante;
     private String nombreTitular;
     private String tarjeta;
     private String expira;

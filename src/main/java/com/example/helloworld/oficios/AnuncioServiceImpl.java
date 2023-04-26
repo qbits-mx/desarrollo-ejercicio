@@ -25,8 +25,8 @@ public class AnuncioServiceImpl implements AnuncioService {
         return anuncioMapper.selectByIdAnunciante(id);
     }
     public void guarda(Anuncio anuncio) {
-        int id = anuncio.getId();
-        Anuncio encontrado = this.obtenAnuncioPorId(id);
+        int id = anuncio.getIdAnunciante();
+        Anuncio encontrado = this.obtenAnuncioPorIdAnunciante(id);
         if (encontrado == null) {
             anuncioMapper.insert(anuncio);
         } else {

@@ -20,13 +20,12 @@ public interface AnuncioMapper {
         id="ChambaMap", 
         value = {
             @Result(property = "idAnunciante",        column = "id_anunciante"),
-            @Result(property = "codigoPostal",        column = "codigo_postal")           
-    })
+            @Result(property = "codigoPostal",        column = "codigo_postal") })
     @Select("select * from anuncio")
     List<Anuncio> getAll();
 
     @ResultMap("ChambaMap")
-    @Select("select * from anuncio where id=#{id}")
+    @Select("select * from anuncio where id_anunciante=#{idAnunciante}")
     Anuncio selectById(int id);
     
     @ResultMap("ChambaMap")
@@ -34,10 +33,10 @@ public interface AnuncioMapper {
     Anuncio selectByIdAnunciante(int id);
     
     @Insert("insert into anuncio values(#{id}, #{idAnunciante}, #{titulo}, #{anuncio}, #{codigoPostal}, #{oficio}, #{email}, #{telefono})")
-    void insert(Anuncio anuncio);
+    void insert(Anuncio rm);
     
-    @Update("update anuncio set id_anunciante=#{idAnunciante}, titulo=#{titulo}, anuncio=#{anuncio}, codigo_postal=#{codigoPostal}, oficio=#{oficio}, email=#{email}, telefono=#{telefono}, where id=#{id} ")
-    void update(Anuncio anuncio);
+    @Update("update anuncio set id_anunciante=#{idAnunciante}, titulo=#{titulo}, anuncio=#{anuncio}, codigo_postal=#{codigoPostal}, oficio=#{oficio}, email=#{email}, telefono=#{telefono} where id=#{id} ")
+    void update(Anuncio rm);
 
     @Delete("delete from anuncio where id=#{id}")
     void delete(int id);

@@ -15,8 +15,7 @@ public class RegistroAnunciante {
     private String telefonoPersonal;
     private String fechaNacimiento;
     private String oficio;
-    private String telefonoNegocio;
-    private String codigoPostalNegocio;
+    private String codigoPostal;
 
 
 }
