@@ -12,4 +12,6 @@ public class Datos {
     private String cp;
     private long telPersonal;
     private String date;
+    private int oficio;
+
 }

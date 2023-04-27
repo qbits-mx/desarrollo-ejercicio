@@ -14,7 +14,7 @@ public class DatosAlta {
     private String DescripcionLarga;
     private String fechaCarga;
     private String cp;
-    private long TelTrabajo;
+    private String TelTrabajo;
     private String Negocio;
     private String Link;
     private boolean activo;

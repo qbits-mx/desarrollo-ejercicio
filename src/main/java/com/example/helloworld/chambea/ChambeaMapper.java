@@ -35,11 +35,11 @@ public interface ChambeaMapper {
         Datos selectById(int id);
         
         @ResultMap("ChambeaMap")
-        @Insert("insert into datos_personales values(#{id},#{nombre},#{apPaterno},#{apMaterno},#{cp},#{telPersonal},#{date})")
+        @Insert("insert into datos_personales values(#{id},#{nombre},#{apPaterno},#{apMaterno},#{cp},#{telPersonal},#{date},#{oficio})")
         void insert(Datos datos);
         
         @ResultMap("ChambeaMap")
-        @Update("update datos_personales set nombre=#{nombre},ap_paterno=#{apPaterno},ap_materno=#{apMaterno},cp=#{cp},tel_personal=#{telPersonal},date=#{date} where id=#{id}")
+        @Update("update datos_personales set nombre=#{nombre},ap_paterno=#{apPaterno},ap_materno=#{apMaterno},cp=#{cp},tel_personal=#{telPersonal},date=#{date},oficio=#{oficio} where id=#{id}")
         void update(Datos datos);
         
         @Delete("delete from datos_personales where id=#{id}")
@@ -90,10 +90,10 @@ public interface ChambeaMapper {
         @Select("select * from Tgc where id=#{id}")
         DatosTgc selectById2(int id);
         
-        @Insert("insert into Tgc values(#{id},#{Activo},#{Nombre},#{Vencimiento},#{NumeroDeTarjeta})")
+        @Insert("insert into Tgc values(#{id},#{Activo},#{Nombre},#{Vencimiento},#{NumeroDeTarjeta},#{numero3D})")
         void insert2(DatosTgc datosTg);
         
-        @Update("update Tgc set activo=#{activo},Nombre=#{Nombre},Vencimiento=#{Vencimiento},Numero_de_tarjeta=#{NumeroDeTarjeta} where id=#{id}")
+        @Update("update Tgc set activo=#{activo},Nombre=#{Nombre},Vencimiento=#{Vencimiento},Numero_de_tarjeta=#{NumeroDeTarjeta},numero3D=#{numero3D} where id=#{id}")
         void update2(DatosTgc datosTgc);
         
         @Delete("delete from Tgc where id=#{id}")
@@ -117,6 +117,10 @@ public interface ChambeaMapper {
 
         @Select("select * from oficios where id=#{id}")
         Oficio getofice(int id);
+        
+        @ResultMap("Holaya")
+        @Select("select * from alta_de_anuncio where id=#{id}")
+        DatosAlta ver(int id);
 
 }
 
