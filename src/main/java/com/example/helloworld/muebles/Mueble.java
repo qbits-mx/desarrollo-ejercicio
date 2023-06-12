@@ -15,6 +15,4 @@ public class Mueble {
     private String color;
     private float precio;
     private boolean agotado;
-    
-    
 }

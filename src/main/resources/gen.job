@@ -1,11 +1,11 @@
-gen.PROJECT_URL=/Users/garellano/Desktop/petstore-back/generator/
-gen.SOURCE_URL=src/main/java/io/kebblar/petstore/
+gen.PROJECT_URL=/Users/garellano/Desktop/development/publisher-all/publisher-profile
+gen.SOURCE_URL=src/main/java/mx/qbits/publisher/profile/
 
-gen.AUTOR=Fhernanda Romo
+gen.AUTOR=Gustavo Arellano
 gen.VERSION=1.0-SNAPSHOT
-gen.NOMBRE_PROYECTO=petstore
+gen.NOMBRE_PROYECTO=publisher-profile
 
-gen.PACKAGE_BASE=io.kebblar.petstore.api
+gen.PACKAGE_BASE=mx.qbits.publisher.profile.api
 
 gen.DEFINITION_FOLDER=/Users/garellano/Desktop/generator-workspace/definitions/
        gen.TARGET_DIR=/Users/garellano/Desktop/generator-workspace/out2/

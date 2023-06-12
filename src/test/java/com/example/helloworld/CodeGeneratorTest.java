@@ -1,5 +1,5 @@
 package com.example.helloworld;
-/** /
+/**/
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Files;
@@ -16,7 +16,7 @@ import mx.com.ultrasist.ci.generator.GenCode;
 import mx.com.ultrasist.ci.generator.model.Entidad;
 /**/
 public class CodeGeneratorTest {
-    /** /
+    /**/
     private static Log logger = LogFactory.getLog(CodeGeneratorTest.class);
 
     private static void doit(GenCode codeGenerator) {
@@ -42,12 +42,12 @@ public class CodeGeneratorTest {
      * Test for Generator lib.
      * 
      * @param args No necesita parámetros de entrada
-     *
+     */
     public static void main(String... args) throws IOException {
         logger.info("Calculando la lista total de Entidades a procesar...");
         long start = System.currentTimeMillis();
         List<Entidad> lista =  GenCode.pop(
-                "jdbc:mariadb://localhost:3307/publisher",//"jdbc:mysql://100.24.41.125:3306/cinepolis?zeroDateTimeBehavior=convertToNull",
+                "jdbc:mariadb://54.165.81.195:3307/publisher",//"jdbc:mysql://100.24.41.125:3306/cinepolis?zeroDateTimeBehavior=convertToNull",
                 "root", 
                 "garellano", 
                 "org.mariadb.jdbc.Driver");
@@ -68,9 +68,14 @@ public class CodeGeneratorTest {
         String all = mapper.writeValueAsString(lista);
         logger.info(all);
         List<Entidad> obj = mapper.readValue(all, new TypeReference<List<Entidad>>(){});
-
+        
+        
+        
         logger.info("Seleccionando algunas de las tablas de la DB");
-        String[] tablas = {"producto","imagen_producto","caracteristica_producto"}; 
+        String[] tablas = {"skill","usuario_skill","usuario_body"}; 
+        
+        
+        
         List<Entidad> seleccion = GenCode.filter(obj, tablas);
         
         logger.info("Procesando sólo las tablas seleccionadas");

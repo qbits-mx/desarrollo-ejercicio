@@ -53,11 +53,11 @@
             <groupId>com.zaxxer</groupId>
             <artifactId>HikariCP</artifactId>
         </dependency> 
-<!--         <dependency> -->
-<!--             <groupId>mx.com.ultrasist.ci</groupId> -->
-<!--             <artifactId>generator</artifactId> -->
-<!--             <version>1.0-SNAPSHOT</version> -->
-<!--         </dependency> -->
+        <dependency>
+            <groupId>mx.com.ultrasist.ci</groupId>
+            <artifactId>generator</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -65,6 +65,14 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.sonarsource.scanner.maven</groupId>
+                <artifactId>sonar-maven-plugin</artifactId>
+                <version>3.7.0.1746</version>
+                <!-- version used to be: 3.4.0.905 -->
+                <!-- If you get a java.lang.OutOfMemoryError, use: export MAVEN_OPTS="-Xmx512m" -->
+                <!-- Info from: https://docs.sonarqube.org/9.8/analyzing-source-code/scanners/sonarscanner-for-maven/ -->
             </plugin>
         </plugins>
     </build>
